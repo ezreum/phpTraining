@@ -1,26 +1,26 @@
 <?php
-$nombre = isset($_GET['ncookie'])?$_GET['ncookie']:'';
-$content = isset($_GET['ncontent'])?$_GET['ncookie']:'';
-if (!isset($_COOKIE[$nombre])) {
-    //crear niveles de rutas mediante ifs
-    $ruta = isset($_GET['nivel'])?$_GET['nivel']:'';
-    if ($ruta == 0) {
-        pathinfo('./');
-    }
-    elseif ($ruta == 1){
-        pathinfo('./uno');
-    }
-    elseif ($ruta == 2) {
-        pathinfo('./uno/dos');
-    }
-    else $ruta ="Te has equivocado listillo";
-    
-    setcookie($nombre,$content,0,$ruta);
-    echo"¡La cookie ha sido puesta!";
-}
-else {echo "te vas sin cookie (nueva)";}
+$nombre = isset($_GET['ncookie']) ? $_GET['ncookie'] : '';
+$content = isset($_GET['ncontent']) ? $_GET['ncookie'] : '';
+$nivel = isset($_GET['nivel']) ? $_GET['nivel'] : '';
+
+$ruta = pathinfo($_SERVER['REQUEST_URI'])['dirname'];
+
+if ($nivel == 0) {
+    $ruta .= '/';
+} elseif ($nivel == 1) {
+    $ruta .= '/uno/';
+} elseif ($nivel == 2) {
+    $ruta .= '/uno/dos/';
+} else
+    $ruta = "Te has equivocado listillo";
+
+setcookie($nombre, $content, 0, $ruta);
+echo "¡La cookie ha sido puesta! en ";
+echo "<pre>";
+print_r($ruta);
+echo "</pre>";
 ?>
 <form action="ej03.php">
-<label for="principal">vuelta a la principal</label>
-<input id="principal" type="submit" value="volver"/>
+	<label for="principal">vuelta a la principal</label> <input
+		id="principal" type="submit" value="volver" />
 </form>
