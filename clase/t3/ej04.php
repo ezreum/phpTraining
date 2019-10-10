@@ -9,20 +9,14 @@
 if (!isset($_COOKIE['nv'])) {
     echo "<p>Primera ejecución. Usted no está conectado</p>";
     echo "<form action=\"ej04-01.php\">";
-    echo "<input type=\"text\" name=\"\"/></br>";
-    echo "<input type=\"password\" name=\"\"/></br>";
+    echo "<label>Ususario</label>";
+    echo "<input type=\"text\" name=\"ncookie\"/></br>";
+    echo "<label>Clave</label>";
+    echo "<input type=\"password\" name=\"ncontent\"/></br>";
+    echo "<input type=\"hidden\" name=\"conexion\"/></br>";
     echo "<input type=\"submit\" value=\"Autenticar\"/>";
     echo "</form>";
-}
-else {
-    //modificado
-    echo "<p>Conectado como {$_COOKIE['nv']}</p>";
-    echo "<form action=\"ej04-01.php\">";
-    echo "<input type=\"text\" name=\"\"/></br>";
-    echo "<input type=\"password\" name=\"\"/></br>";
-    echo "<input type=\"submit\" value=\"Autenticar\"/>";
-    echo "</form>";
-}
+} 
 ?>
 </body>
 </html>
