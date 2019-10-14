@@ -4,7 +4,7 @@
 </head>
 <body>
 <h1>Tratamiento de cookies</h1>
-</br>
+<br/>
 <?php 
 if (!isset($_COOKIE['nv'])) {
     echo "<p>Primera ejecución. Usted no está conectado</p>";
