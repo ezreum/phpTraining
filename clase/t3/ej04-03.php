@@ -1,13 +1,8 @@
-<html>
-<head>
-<title>Ejercicio de tratatmiento de cookies</title>
-</head>
-<body>
-<h1>Tratamiento de cookies</h1>
-<br/>
 <?php
-$html = <<<HTML
-<p>Primera ejecución. Usted no está conectado</p>
+if (isset($_COOKIE['user'])) {
+    $name = $_COOKIE['user'];
+    $message =<<<HTML
+    <p>Adios <strong>$name</strong>. Usted no está conectado</p>
 <form action=ej04-01.php method="POST">
 <label>Ususario</label>
 <input type="text" name="ncookie"/><br/>
@@ -16,5 +11,9 @@ $html = <<<HTML
 <input type="submit" value="Autenticar">
 </form>
 HTML;
-echo $html;
+    echo $message;
+}
+else {
+    header('Location:ej04-error.php');
+}
 ?>
