@@ -20,8 +20,8 @@ function validate($name,$pwd) {
     return $bo;
 }
 if (($nombre != null) && ($content != null) && (validate($nombre,$content)==true)){
-    setcookie('user', $nombre);
-    setcookie('vueltas', 0);
+    $user=$nombre."%"."0";
+    setcookie('user', $user);
    header('Location:ej04-02.php');
 } else {
     header('Location:ej04-error.php');
