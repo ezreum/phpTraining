@@ -18,5 +18,7 @@ function refrescar() {
 
 <label for="nombre">escribe tu nombre</label>
 <input id="nombre" type="text" name="nombre"/>
+<label for="apellido">escribe tu nombre</label>
+<input id="apellido" type="text" name="apellido"/>
 <div id="caja"></div>
 <button onclick='refrescar();'>refrescar</button>
