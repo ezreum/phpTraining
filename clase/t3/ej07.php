@@ -5,7 +5,7 @@ $html=<<<HTML
         <title>1er form</title>
     </head>
     <body>
-            <form>
+            <form action ="ej07-01.php">
             <input type="image" src="iconos/number-1-icon.png" height="50" weight="50"/>
             <input style="filter: grayscale(1.0);" type="image" src="iconos/Number-2-icon.png" height="50" weight="50" disabled/>
             <input style="filter: grayscale(1.0);" type="image" src="iconos/number-3-icon.png" height="50" weight="50" disabled/>
@@ -34,14 +34,14 @@ $html=<<<HTML
                 <input id="hijos" type="checkbox" name="hijos" value="hijos"/>
                 <br/>
                 <label for="nacionalidades">Nacionalidades</label>
-                <select id="nacionalidades" name="nacionalidades" multiple>
+                <select id="nacionalidades" name="nacionalidades[]" multiple>
                 <option value="española">española</option>
                 <option value="alemana">alemana</option>
                 <option value="francesa">francesa</option>
                 <option value="danesa">danesa</option>
                 </select>
                 <br/>
-                <input type="submit" value="grabar informacion e ir al paso 2"/>
+                <input type="submit" value="grabar informacion e ir al paso 2 - Datos profesionales"/>
             </fieldset>
         </form>
     </body>
