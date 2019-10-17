@@ -1,16 +1,12 @@
 <?php
 session_start();
-echo session_status();
-if(!isset($_SESSION['cuenta'])){
-  $html=<<<HTML
-<h1>esta es tu primera ejecución de la página, enjoy!</h1>
-HTML;
-  $_SESSION['cuenta']=1;
-} else if(isset($_SESSION['cuenta'])){
+print_r($_SESSION);
+if(isset($_SESSION['cuenta'])){
     $contador=$_SESSION['cuenta'];
     $html=<<<HTML
 <h1>esta es tu ejecución número $contador</h1>
 HTML;
+    echo $html;
     $contador++;
     $_SESSION['cuenta']=$contador;
   }
