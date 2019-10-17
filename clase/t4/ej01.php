@@ -3,7 +3,7 @@
 function refrescar() {
 	var x = new XMLHttpRequest();
 	var res;
-	x.open("GET", "ej01-01.php?nombre="+document.getElementById("nombre").value, true);
+	x.open("GET", "ej01-01.php?nombre="+document.getElementById("nombre").value+"&apellido="+document.getElementById("apellido").value, true);
 	x.send();
 	x.onreadystatechange = function(){
 		if (x.readyState==4 &&x.status==200){
