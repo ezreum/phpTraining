@@ -7,6 +7,11 @@ $_SESSION['genero']=isset($_GET['genero'])?$_GET['genero']:'';
 $_SESSION['casado']=isset($_GET['casado'])?$_GET['casado']:'';
 $_SESSION['hijos']=isset($_GET['hijos'])?$_GET['hijos']:'';
 $_SESSION['nacionalidades']=isset($_GET['nacionalidades'])?$_GET['nacionalidades']:'';
+
+$departamento=isset($_GET['departamento'])?$_GET['departamento']:'';
+$salario=isset($_GET['salario'])?$_GET['salario']:'';
+$comentario=isset($_GET['comentarios'])?$_GET['comentarios']:'';
+
 $html=<<<HTML
 <html>
     <head>
@@ -14,10 +19,10 @@ $html=<<<HTML
     </head>
     <body>
             <form action ="ej07-02.php">
-            <input style="filter: grayscale(1.0);" type="image" src="iconos/number-1-icon.png" height="50" weight="50"/>
-            <input type="image" src="iconos/Number-2-icon.png" height="50" weight="50" disabled/>
-            <input style="filter: grayscale(1.0);" type="image" src="iconos/number-3-icon.png" height="50" weight="50" disabled/>
-            <input type="image" src="iconos/checkered-flag-icon.png" height="50" weight="50" disabled/>
+            <a href="ej07.php"><img style="filter: grayscale(1.0);" type="image" src="iconos/number-1-icon.png" height="50" weight="50"value=/></a>
+            <input type="image" src="iconos/Number-2-icon.png" height="50" weight="50"/>
+            <input style="filter: grayscale(1.0);" type="image" src="iconos/number-3-icon.png" height="50" weight="50"/>
+            <input type="image" src="iconos/checkered-flag-icon.png" height="50" weight="50"/>
             <fieldset>
                 <legend>Datos Profesionales</legend>
                 <label for="departamento">Departamento</label>
@@ -29,10 +34,10 @@ $html=<<<HTML
                 </select>
                 <br/>
                 <label for="salario">salario</label>
-                <input id="salario" type="text" name="salario"/>
+                <input id="salario" type="text" name="salario" value=$salario/>
                 <br/>
                 <label for="comentarios">comentarios</label>
-                <textarea name="comentarios" cols="50" rows="10">Escribe aquí</textarea>
+                <textarea name="comentarios" cols="50" rows="10">$comentario</textarea>
                 <br/>
                 <input type="submit" value="grabar informacion e ir al paso 3 - Datos bancarios"/>
             </fieldset>
