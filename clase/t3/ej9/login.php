@@ -1,8 +1,8 @@
 <?php
 session_start();
-$name= isset($_POST['name'])?$_POST['name']:'';
-$check= isset($_POST['recordar'])?"checked=\"checked\"":'';
-
+print_r($_SESSION);
+$name= isset($_SESSION['name'])?$_SESSION['name']:'';
+$check = isset($_SESSION['recordar'])?$_SESSION['recordar']:'';
 $html=<<<HTML
 <html>
 <head>
