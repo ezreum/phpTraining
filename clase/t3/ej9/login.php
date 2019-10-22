@@ -1,9 +1,10 @@
 <?php
 session_start();
-print_r($_SESSION);
-$name= isset($_SESSION['name'])?$_SESSION['name']:'';
-$check = isset($_SESSION['recordar'])?$_SESSION['recordar']:'';
-$html=<<<HTML
+
+$name = isset($_SESSION['_activo']) ? $_SESSION['_activo'] : '';
+$check = isset($_SESSION['_recordar']) ? $_SESSION['_recordar'] : '';
+
+$html = <<<HTML
 <html>
 <head>
 <title>Login</title>
