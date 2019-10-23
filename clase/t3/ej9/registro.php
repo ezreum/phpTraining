@@ -19,9 +19,12 @@ $pwd=isset($_POST['pwd'])?$_POST['pwd']:'';
 
 if (($name!='')&&($pwd!='')) {
     $_SESSION['usuarios']=
-        [$name =>[[],$pwd]]
+        [$name => ['pwd' => $pwd]
+            
+        ]
     ;
-    echo $_SESSION['usuarios']['pepe'][1];
+    header('Location:login.php');
+    //var_dump($_SESSION['usuarios']['pepe']);
 }
 
 ?>
