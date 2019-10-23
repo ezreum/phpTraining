@@ -7,5 +7,8 @@ $check = isset($_POST['recordar']) ? true : false;
 $name != '' ? $_SESSION['_activo'] = $name : $_SESSION['_activo'] = '';
 $check == true ? $_SESSION['_recordar'] = "checked=\"checked\"" : $_SESSION[_recordar] = '';
 
+
+
+
 ?>
 <a href="login.php">Login</a>
