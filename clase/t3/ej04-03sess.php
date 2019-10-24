@@ -2,9 +2,9 @@
 session_start();
 session_destroy();
 if (isset($_SESSION['user'])) {
-    $name = $_SESSION['user'];
+    $activo = $_SESSION['user'];
     $message = <<<HTML
-    <p>Adios <strong>$name</strong>. Usted no está conectado</p>
+    <p>Adios <strong>$activo</strong>. Usted no está conectado</p>
 <form action=ej04-01sess.php method="POST">
 <label>Ususario</label>
 <input type="text" name="ncookie"/><br/>

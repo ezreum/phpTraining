@@ -14,17 +14,21 @@ $html=<<<HTML
 HTML;
 echo $html;
 
-$name=isset($_POST['nombre'])?$_POST['nombre']:'';
+$activo=isset($_POST['nombre'])?$_POST['nombre']:'';
 $pwd=isset($_POST['pwd'])?$_POST['pwd']:'';
 
-if (($name!='')&&($pwd!='')) {
-    $_SESSION['usuarios']=
-        [$name => ['pwd' => $pwd]
-            
-        ]
-    ;
-    header('Location:login.php');
-    //var_dump($_SESSION['usuarios']['pepe']);
+require_once 'utilito.php';
+if ($activo=='' && $pwd==''){
+echo <<<html
+<h2>Introduce las credenciales del nuevo usuario</h2>
+html;
 }
-
+else{
+    echo crearUsuario($activo,$pwd)==false?
+    <<<HTML
+    <h2>El usuario ya existe, intentalo de nuevo</h2>
+HTML
+    :header('Location:login.php');
+}
+var_dump($_SESSION['usuarios']);
 ?>

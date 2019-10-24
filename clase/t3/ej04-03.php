@@ -1,8 +1,8 @@
 <?php
 if (isset($_COOKIE['user'])) {
-    $name = $_COOKIE['user'];
+    $activo = $_COOKIE['user'];
     $message =<<<HTML
-    <p>Adios <strong>$name</strong>. Usted no está conectado</p>
+    <p>Adios <strong>$activo</strong>. Usted no está conectado</p>
 <form action=ej04-01.php method="POST">
 <label>Ususario</label>
 <input type="text" name="ncookie"/><br/>

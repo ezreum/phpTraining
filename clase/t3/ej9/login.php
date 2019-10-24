@@ -1,12 +1,12 @@
 <?php
 session_start();
 $check;
-$name;
+$activo;
 if ($_SESSION['_recordar']!='') {
     $check = $_SESSION['_recordar'];
-    $name = $_SESSION['_activo'];
+    $activo = $_SESSION['_activo'];
 }
-echo $check." ".$name;
+echo $check." ".$activo;
 $html = <<<HTML
 <html>
 <head>
@@ -18,7 +18,7 @@ $html = <<<HTML
 <fieldset>
 <legend>Login</legend>
 <label for="name">nombre</label>
-<input id="name" type="text" name="name" value="$name" />
+<input id="name" type="text" name="name" value="$activo" />
 <br/>
 <label for="pwd">contraseña</label>
 <input id="pwd" type="password" name="pwd" value=""/>
@@ -30,8 +30,10 @@ $html = <<<HTML
 </form>
 
 <a href="registro.php">Registrar nuevo usuario</a>
+<hr/>
 </body>
 </html>
 HTML;
 echo $html;
+var_dump($_SESSION['usuarios']);
 ?>
