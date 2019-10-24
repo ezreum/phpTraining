@@ -35,5 +35,7 @@ $html = <<<HTML
 </html>
 HTML;
 echo $html;
+echo '<pre>';
 var_dump($_SESSION['usuarios']);
+echo '</pre>';
 ?>
