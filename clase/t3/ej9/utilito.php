@@ -29,17 +29,21 @@ function pintarUsuarios()
 {
     foreach ($_SESSION['usuarios'] as $user => $content) {
         if ($user != $_SESSION['_activo']) {
-            $numMen = sizeof($content['mensajes']);
+            $numMen = sizeof($_SESSION['usuarios'][$_SESSION['_activo']]['mensajes'][$user]);
             $html = "";
-            if ($numMen > 0) {
+            if ($_SESSION['usuarios'][$_SESSION['_activo']]['mensajes'][$user]>0) {
                 $html = <<<HTML
                 <a href="leer.php?name=$user">leer</a>
-HTML;
-            }
-            $html .= <<<HTML
                 <a href="escribir.php?name=$user">escribir</a>                
 HTML;
-            echo $user . "($numMen)" . $html . "<br/>";
+            echo $user . " ($numMen) " . $html . "<br/>";
+            }
+            else{
+                $html = <<<HTML
+                <a href="escribir.php?name=$user">escribir</a>
+HTML;
+                echo $user . $html . "<br/>";
+            }
         }
     }
 }

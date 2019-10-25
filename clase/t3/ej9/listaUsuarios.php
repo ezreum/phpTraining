@@ -8,4 +8,7 @@ html;
 require_once 'utilito.php';
 pintarUsuarios();
 
+echo "<pre>";
+var_dump($_SESSION);
+echo "</pre>";
 ?>
