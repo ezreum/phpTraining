@@ -6,8 +6,8 @@ $texto = isset($_POST['texto'])?$_POST['texto']:'';
 
 //print_r($_SESSION['usuarios'][$_SESSION[$remitente]]);
 
-$date = new DateTime(date("Y-m-d"));
-$formattedDate = $date->format('d-m-Y');
+$date = new DateTime(date("Y-m-d h:i:s"));
+$formattedDate = $date->format('d-m-Y h:i:s');
 if (($receptor!='')&&($texto!='')) {
     $infoArray=[
         ['remitente' => $remitente,
@@ -19,17 +19,17 @@ if (($receptor!='')&&($texto!='')) {
         $_SESSION['usuarios'][$receptor]['mensajes'][$remitente] = [];
         array_push($_SESSION['usuarios'][$receptor]['mensajes'][$remitente], $infoArray);
         //array_push($_SESSION['usuarios'][$_SESSION[$receptor]]['mensajes'][$remitente], );
-        echo "primer push"; 
+        echo "Mensaje enviado, le redirigimos a su bandeja de entrada"; 
         header('refresh:3;url=listaUsuarios.php');
     }
     else {
         array_push($_SESSION['usuarios'][$receptor]['mensajes'][$remitente], $infoArray);
-        echo "aqui illo";
+        echo "Mensaje enviado, le redirigimos a su bandeja de entrada";
         header('refresh:3;url=listaUsuarios.php');
     }
 }
 else {
-    echo "hubo un error";
+    echo "hubo un error, le redirigimos a su bandeja de entrada";
     header('refresh:3;url=listaUsuarios.php');
 }
 ?>
