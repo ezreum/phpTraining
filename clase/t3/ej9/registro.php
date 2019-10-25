@@ -21,7 +21,4 @@ echo $html;
     <a href="login.php">Vuelta al login</a>
 html;
 
-echo "<pre>";
-var_dump($_SESSION['usuarios']);
-echo "</pre>";
 ?>

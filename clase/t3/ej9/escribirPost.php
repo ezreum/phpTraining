@@ -18,7 +18,6 @@ if (($receptor!='')&&($texto!='')) {
     if(!is_array($_SESSION['usuarios'][$receptor]['mensajes'][$remitente])){
         $_SESSION['usuarios'][$receptor]['mensajes'][$remitente] = [];
         array_push($_SESSION['usuarios'][$receptor]['mensajes'][$remitente], $infoArray);
-        //array_push($_SESSION['usuarios'][$_SESSION[$receptor]]['mensajes'][$remitente], );
         echo "Mensaje enviado, le redirigimos a su bandeja de entrada"; 
         header('refresh:3;url=listaUsuarios.php');
     }

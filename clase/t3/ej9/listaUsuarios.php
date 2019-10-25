@@ -11,7 +11,5 @@ echo <<<HTML
     <br/>
     <a href="login.php">Entrar con otro usuario</a>
 HTML;
-echo "<pre>";
-var_dump($_SESSION);
-echo "</pre>";
+
 ?>

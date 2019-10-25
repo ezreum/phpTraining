@@ -6,7 +6,7 @@ if ($_SESSION['_recordar']!='') {
     $check = $_SESSION['_recordar'];
     $activo = $_SESSION['_activo'];
 }
-echo $check." ".$activo;
+
 $html = <<<HTML
 <html>
 <head>
@@ -35,7 +35,4 @@ $html = <<<HTML
 </html>
 HTML;
 echo $html;
-echo '<pre>';
-var_dump($_SESSION['usuarios']);
-echo '</pre>';
 ?>
