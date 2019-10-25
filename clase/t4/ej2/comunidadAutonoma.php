@@ -1,12 +1,5 @@
-<?php
-require_once 'info.php';
+<?php require_once 'info.php';?>
 
-$inyeccion = '';
-foreach ($comunidades as $comunidad => $provincias) {
-    $inyeccion .= "<option id=$comunidad>$comunidad</option>";
-}
-
-$html = <<<HTML
 <html>
 <head>
 <title>Comunidades y provincias</title>
@@ -38,14 +31,16 @@ function refrescar() {
             }
             pintarSelect();
 			}
-		}
+		}$inyeccion
 
 </script>
 </head>
 <body>
 <label for="comunidad">CCAA</label>
 <select id="comunidad" name="comunidad" onchange="refrescar();">
-$inyeccion
+<?php foreach($comunidades as $comunidad => $provincia) :?>
+	<option value="<?=$comunidad?>" ><?=$comunidad?></option>
+<?php endforeach; ?>
 </select>
 <br/>
 <label for="provincia">Provincia</label>
@@ -54,7 +49,3 @@ $inyeccion
 </select>
 </body>
 </html>
-HTML;
-
-echo $html;
-?>
