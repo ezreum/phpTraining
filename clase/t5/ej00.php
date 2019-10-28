@@ -1,8 +1,8 @@
 <?php
 function conectarMySQL (
         $schema = 'test',  
-        $usu = 'root',
-        $pwd = '',
+        $usu = 'ruben',
+        $pwd = '1234',
         $host = 'localhost'
     ){
         try {
