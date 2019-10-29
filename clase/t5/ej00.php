@@ -9,7 +9,7 @@ function conectarMySQL (
             $dsn = "mysql:host=$host;dbame=$schema";
             $db = new PDO($dsn,$usu,$pwd);
         } catch (Exception $e) {
-            print ("error de conexión a $chema");
+            print ("error de conexión a $schema");
             die();
         }
       return $db;
