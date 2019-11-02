@@ -1,9 +1,9 @@
 <?php
 
 function conectarDB(
-    $schema = 'test',
     $usu = 'root',
     $pwd = '',
+    $schema = 'test',
     $host = 'localhost'
         ){
             try {
@@ -18,6 +18,12 @@ function conectarDB(
 
 function insertarNombre($nombre) {
     ;
+}
+
+function crearTablas($lista){
+    foreach ($lista as $nombre){
+        
+    }
 }
 
 

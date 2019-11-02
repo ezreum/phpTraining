@@ -1,8 +1,7 @@
 <?php
 $name = isset($_GET['nombre'])?$_GET['nombre']:'';
 
-
-echo "a";
+$query = "insert into ";
 
 
 ?>
