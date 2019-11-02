@@ -1,8 +1,8 @@
 <?php
 
 function conectarDB(
-    $usu = 'root',
-    $pwd = '',
+    $usu = 'ruben',
+    $pwd = '1234',
     $schema = 'test',
     $host = 'localhost'
         ){
