@@ -1,5 +1,5 @@
 <?php
-function conectarMySQL (
+ function conectarMySQL (
         $schema = 'test',  
         $usu = 'ruben',
         $pwd = '1234',
@@ -17,5 +17,4 @@ function conectarMySQL (
 
 $db = conectarMySQL();
 echo "<h1>todo en marcha</h1>";
-
 ?>
