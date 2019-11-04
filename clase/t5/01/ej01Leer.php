@@ -5,9 +5,13 @@ require_once '../util.php';
 // =============================================
 
 $base = conectarDB();
-$sql = <<<sql
-INSERT INTO TRABAJADORES(NOMBRE) VALUES('$name');
-sql;
+
+$sql = <<<SQL
+        INSERT INTO trabajadores (nombre) VALUES('$name')
+SQL;
+
+
+
 echo $sql;
 if ($base->exec($sql) == 0) {
     echo "<h1>Error</h1>";
