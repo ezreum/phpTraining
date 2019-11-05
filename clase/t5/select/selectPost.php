@@ -10,5 +10,12 @@ select $campo from $tabla;
 sql;
 
 
+$res = $bd->query($sql);
 
+
+echo "<table border='1'><th>nombre</th>";
+foreach ($res as $nombre){
+    echo "<tr><td>{$nombre['nombre']}</td></tr>";
+    }
+echo "</tabla>";
 ?>

@@ -13,6 +13,7 @@
 		introduce la tabla
 		<input type="text" name="tabla"/>
 		<br/>
+		<input type="submit" value="enviar"/>
 		</form>
 	
 	</body>
