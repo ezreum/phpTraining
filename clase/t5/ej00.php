@@ -16,7 +16,7 @@
 }
 
 $base = conectarMySQL();
-echo "<h1>todo en marcha</h1>";
+echo "<h1>todo en marcha ya</h1>";
 
 $query = <<<sql
 INSERT INTO TRABAJADORES(NOMBRE) VALUES('$name');
