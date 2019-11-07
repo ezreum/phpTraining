@@ -9,7 +9,7 @@ if (isset($_SESSION['baraja'])) {
     header("Location:jugada.php");
 }
 else {
-    header("Location:jugada.php");
+    header("Location:inicializar.php");
 }
 
 

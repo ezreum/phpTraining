@@ -39,6 +39,6 @@ if (isset($_SESSION['jugador'])&& $_SESSION['jugador']!==[]):
 	<button>plantarse</button>
 </a>
 
-<form action="incializar.php">
+<form action="inicializar.php">
 	<input type="submit" value="Nuevo juego" name="nuevo"/>
 </form>

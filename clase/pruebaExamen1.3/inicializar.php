@@ -3,7 +3,7 @@ session_start();
 require_once 'tools.php';
 
 if (isset($_GET['nuevo'])){
-    unset($_SESSION);
+    unset($_SESSION['baraja']);
 }
 
 
