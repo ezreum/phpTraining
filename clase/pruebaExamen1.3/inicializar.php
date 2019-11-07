@@ -9,8 +9,11 @@ if (isset($_GET['nuevo'])){
 
 
 if (!isset($_SESSION['baraja'])){
+    $_SESSION['jugador']=[];
     $_SESSION['baraja'] = prepararBaraja();
+    $_SESSION['ganadas']=0;
+    $_SESSION['perdidas']=0;
 }
-
+    
 header('Location:jugada.php');
 ?>

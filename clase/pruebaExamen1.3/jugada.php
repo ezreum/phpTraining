@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'tools.php';
-
+isset($_SESSION['baraja'])?'':header('Location:inicializar.php');
 $bool = false;
 ?>
 
@@ -14,10 +14,22 @@ $bool = false;
 
 <h3>Jugada</h3>
 <?php 
-if ($bool):
+if (isset($_SESSION['jugador'])&& $_SESSION['jugador']!==[]):
+/* $imagenCarta = <<<img
+ <img src="" alt="carta"/>
+ img;*/
+
 ?>
 
-
+<?php $acc=0;?>
+	<ul>
+	<?php foreach ($_SESSION['jugador'] as $carta): ?>
+		<li>
+			<?php $acc += $carta->valor ?>
+			<?= $carta->nombre?> (total: <?= $acc ?>)
+		</li>
+	<?php endforeach;?>
+</ul>
 
 <?php else:?>
 <p>(Todavia no se han jugado cartas)</p>
