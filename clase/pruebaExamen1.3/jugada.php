@@ -2,7 +2,7 @@
 session_start();
 require_once 'tools.php';
 
-$bool = isset($_SESSION['baraja']);
+$bool = false;
 ?>
 
 
