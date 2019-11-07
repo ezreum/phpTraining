@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'Carta.php';
 
 function prepararBaraja() {
