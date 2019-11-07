@@ -1,11 +1,19 @@
 <?php
 session_start();
-isset($_GET['nuevo']) ? unset($_SESSION) : '';
+require_once 'tools.php';
+
+$bool = isset($_SESSION['baraja']);
 ?>
+
+
 <h1>Siete y media</h1>
+
+<a href="jugadaPost.php">
+	<button>sacar carta</button>
+</a>
+
 <h3>Jugada</h3>
 <?php 
-$bool=false;
 if ($bool):
 ?>
 
@@ -15,14 +23,10 @@ if ($bool):
 <p>(Todavia no se han jugado cartas)</p>
 <?php endif;?>
 
-<form action=jugadaPost.php method="POST">
-	<input type="submit" value="Sacar carta"/>
-</form>
+<a href="jugadaBanca.php">
+	<button>plantarse</button>
+</a>
 
-<form action=jugadaBanca.php>
-	<input type="submit" value="plantarse"/>
-</form>
-
-<form>
+<form action="incializar.php">
 	<input type="submit" value="Nuevo juego" name="nuevo"/>
 </form>

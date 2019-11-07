@@ -1,3 +1,3 @@
 <?php
-header('Location:jugada.php');
+header('Location:inicializar.php');
 ?>
