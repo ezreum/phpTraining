@@ -6,7 +6,7 @@
         $host = 'localhost'
     ){
         try {
-            $dsn = "mysql:host=$host;dbame=$schema";
+            $dsn = "mysql:host=$host;dbname=$schema";
             $db = new PDO($dsn,$usu,$pwd);
         } catch (Exception $e) {
             print ("error de conexión a $schema");

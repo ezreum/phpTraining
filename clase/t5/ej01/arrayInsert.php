@@ -12,6 +12,7 @@ foreach ($info as $producto){
     
     if ($sentencia->execute([$nombre,$precio])){
 }
+
 }
 echo"Datos insertados";
 ?>
