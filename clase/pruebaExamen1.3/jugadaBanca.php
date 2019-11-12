@@ -2,7 +2,7 @@
 require_once 'Carta.php';
 session_start();
 
-$jugada = isset($_POST['numero'])?$_POST['numero']:null;
+$jugada = isset($_SESSION['total'])?$_SESSION['total']:null;
 
 if ($jugada!=null) {
     $puntActual=0;
@@ -16,8 +16,8 @@ if ($jugada!=null) {
    
     }
     $puntActual>7.5?$_SESSION['ganadas']+=1:
-    $puntActual>=$jugada?$_SESSION['perdidas']+=1:$_SESSION['ganadas']+=1
-    ;
+    $puntActual>=$jugada?$_SESSION['perdidas']+=1:$_SESSION['ganadas']+=1;
+    
    header('Location:jugada.php');  
 }
 

@@ -3,8 +3,7 @@ require_once 'tools.php';
 require_once 'Carta.php';
 session_start();
 isset($_SESSION['baraja'])?'':header('Location:inicializar.php');
-$quitar='';
-$numero=1;
+$numero=0;
 ?>
 
 
@@ -16,11 +15,7 @@ $numero=1;
 
 <h3>Jugada</h3>
 <?php 
-if (isset($_SESSION['jugador'])&& $_SESSION['jugador']!==[]):
-
-
-
-?>
+if (isset($_SESSION['jugador'])&& $_SESSION['jugador']!==[]):?>
 
 <?php $acc=0;?>
 	<table>
@@ -32,22 +27,50 @@ if (isset($_SESSION['jugador'])&& $_SESSION['jugador']!==[]):
  <img src="$carta->img" alt="carta" width="150px" height="200px"/>
 img;
 			$acc += $carta->valor ?>
-			<?= $imagenCarta?> (total: <?= $acc ?>)
-			<?php $numero=$acc;?>
+			<?= $imagenCarta?>
+			<?php $_SESSION['total']=$acc;?>
 		</td>
 		
-	<?php endforeach;?>
 	
+	
+
+
+<?php endforeach;?>
 </tr>
 </table>
 
-		<?php if ($numero>7.5){
+	<?php echo "puntuación: ".$_SESSION['total']."<br/>";
+	
+
+		 if ($_SESSION['total']>7.5){
             $_SESSION['perdidas']+=1;
 			echo '<h3>Te has pasado, has perdido</h3>';
             }?>
 
 
-<?php if (isset($_SESSION['banca'])):?>
+
+
+
+<?php else:?>
+<p>(Todavia no se han jugado cartas)</p>
+<?php endif;?>
+
+
+
+<a href="jugadaPost.php">
+	<button <?= ($_SESSION['total']>7.5)||(isset($_SESSION['banca']))?'disabled':'';?>>sacar carta</button>
+ </a>
+
+<form action="jugadaBanca.php" method="POST">
+	<input type="submit" value="plantarse" <?= ($_SESSION['total']>7.5)||isset($_SESSION['banca'])?'disabled':'';?>/>
+</form>
+
+<form action="inicializar.php">
+	<input type="submit" value="Nuevo juego" name="nuevo"/>
+</form>
+
+     
+     <?php if (isset($_SESSION['banca'])):?>
 
 <table>
 	<tr>
@@ -59,32 +82,12 @@ img;
  <img src="$carta->img" alt="carta" width="150px" height="200px"/>
 img;
 			$cont += $carta->valor ?>
-			<?= $imagenCarta?> (total: <?= $cont ?>)
+			<?= $imagenCarta?> <?php $numero = $cont;?>
+			
 		</td>
-	<?php endforeach;         ?>
+	<?php endforeach;?>  </tr></table>   
 	
-<?php endif;?>
-
-
-<?php else:?>
-<p>(Todavia no se han jugado cartas)</p>
-<?php endif;?>
-
-
-
-<a href="jugadaPost.php">
-	<button <?= ($numero>7.5)||(isset($_SESSION['banca']))?'disabled':'';?>>sacar carta</button>
- </a>
-
-<form action="jugadaBanca.php" method="POST">
-	<input type="submit" value="plantarse" <?= ($numero>7.5)||isset($_SESSION['banca'])?'disabled':'';?>/>
-	<input type="hidden" name="numero" value="<?= $numero?>"/>
-</form>
-
-<form action="inicializar.php">
-	<input type="submit" value="Nuevo juego" name="nuevo"/>
-</form>
-
- <?php if (isset($_SESSION['banca'])){
-     unset($_SESSION['banca']);
-}?>
+	
+	<?php echo "puntuación: ".$numero;    
+	
+ 	 endif;?>
