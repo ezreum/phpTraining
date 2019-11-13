@@ -10,11 +10,11 @@ select $campo from $tabla;
 sql;
 
 
-$res = $bd->query($sql);
+$filas = $bd->query($sql);
 
 
 echo "<table border='1'><th>nombre</th>";
-foreach ($res as $nombre){
+foreach ($filas as $nombre){
     echo "<tr><td>{$nombre['nombre']}</td></tr>";
     }
 echo "</tabla>";
