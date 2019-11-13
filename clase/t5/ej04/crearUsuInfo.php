@@ -21,7 +21,17 @@
 <input type="submit" value="insertar"/>
 </fieldset>
 </form>
+<script type="text/javascript">
+var inp = document.getElementsByTagName('input');
+for (var i = inp.length-1; i>=0; i--) {
+if ('radio'===inp[i].type) inp[i].checked = false;
+}
+</script>
+
+<a href="panel.php">Ir al inicio</a>
+
 <hr/>
+<?php if (isset($_SESSION['inserciones'])):?>
 <h3>Inserciones hechas en esta sesión</h3>
 <table>
 <tr><th>Nombre</th><th>Apellido</th><th>teléfono</th><th>sexo</th></tr>
@@ -36,3 +46,4 @@ $info = explode(',',$insercion);
 	</tr>
 <?php endforeach;?>
 </table>
+<?php endif;?>

@@ -8,14 +8,14 @@ sql;
 
 $filas = $bd->query($sql);
 ?>
+<a href="panel.php">Ir al inicio</a>
+<hr/>
 
 <table>
 <tr><th>ID</th><th>Nombre</th><th>Apellido</th><th>teléfono</th><th>sexo</th></tr>
 <?php foreach ($filas as $fila): ?>
 	<tr>
-	<?php foreach ($fila as $col => $dato): ?>
-	<td><?= $dato?></td>
-	<?php endforeach;?>
+	<td><?= $fila['idEmpleado']?></td><td><?= $fila['nombre']?></td><td><?= $fila['apellido']?></td><td><?= $fila['telefono']?></td><td><?= $fila['sexo']?></td>
 	</tr>
 <?php endforeach;?>
 </table>
