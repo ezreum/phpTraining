@@ -1,7 +1,10 @@
+<?php session_start();?>
 <body>
 <form action="updUsuPost1.php" method="POST">
 <fieldset>
 <legend>Datos a modificar</legend>
+
+<h3>Escoge uno o todos a la vez</h3>
 
 <h3>nombre</h3>
 <input name="nom" type="text"/>
