@@ -2,6 +2,7 @@
 require_once 'rb.php';
 
 
+
 R::setup('mysql:host=localhost;dbname=test','ruben','1234');
 
 $p = R::dispense('persona');
