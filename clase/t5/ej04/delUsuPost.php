@@ -10,15 +10,15 @@ $iden = ($id !=null)?"idEmpleado = $id": '';
 
 
 $sql="select * from empleados where $iden";
-    
+
 
 if (($filas = $bd->query($sql))==false) {
     header('Location:error.php');
 }
 else{
     foreach ($filas as $fila){
-        $_SESSION['empleadoUpd']=$fila;
+        $_SESSION['empleadoDel']=$fila;
     }
-    header('Location:updUsu1.php');
+    header('Location:delUsu1.php');
 }
 ?>
