@@ -1,17 +1,16 @@
 <?php
 require_once 'rb.php';
+require_once '../t5/util.php';
 
-
-
-R::setup('mysql:host=localhost;dbname=test','ruben','1234');
+prepRB();
 
 $p = R::dispense('persona');
 
 $p-> nombre ='Pepe';
 
-$p-> ap1 ='Sánchez';
-$p-> ap2 ='Pérez';
+$p-> ap1 ='Sanchez';
+$p-> ap2 ='Perez';
 
 R::store($p);
-
+echo "ya";
 ?>
