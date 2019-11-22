@@ -1,6 +1,6 @@
 <?php
-require_once 'rb.php';
-require_once '../t5/util.php';
+require_once '../rb.php';
+require_once '../../t5/util.php';
 
 prepRB();
 
