@@ -11,10 +11,15 @@ $paises=R::findAll('pais');
 <label>Nombre</label>
 <input name="persona" type="text"/>
 <br/>
-
-
-<select name="idPais">
+	Reside
+  <select name="relacionNace">
 <?php foreach ($paises as $pais):?>
+  <option value="<?= $pais->id ?>"><?=$pais->nombre ?> </option>
+  <?php endforeach;?>
+  </select>
+  Vive
+  <select name="relacionReside">
+ <?php foreach ($paises as $pais):?>
   <option value="<?= $pais->id ?>"><?=$pais->nombre ?> </option>
   <?php endforeach;?>
   </select>

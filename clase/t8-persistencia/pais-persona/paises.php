@@ -23,6 +23,7 @@ $paises=R::findAll('pais');
 </table>
 
 <a href="paisesGet.php"><button>crear pais</button></a>
+<a href="menuPrincipal.php"><button>Volver</button></a>
 
 
 
