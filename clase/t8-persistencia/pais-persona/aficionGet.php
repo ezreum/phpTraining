@@ -4,11 +4,11 @@ require_once '../util.php';
 
 ?>
 
-<form>
+<form action="aficionPost.php" method="post">
 <?= pintCheck("checkbox",["futbol","baloncesto","esquí","taekwondo","pelotamano"], "aficiones");?>
 
 
 <hr/>
-<a href="aficionPost.php"><button>crear</button></a>
+<input type="submit" value="añadir afición">
 
 </form>
