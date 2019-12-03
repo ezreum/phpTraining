@@ -15,7 +15,7 @@ $p->nombre=$persona;
 $bo=true;
 
 $paisN=R::findOne('pais','id=?',[$relacionNace])!=null?R::findOne('pais','id=?',[$relacionNace]):null;
-$paisR=R::findOne('pais','id=?',[$relacionNace])!=null?R::findOne('pais','id=?',[$relacionNace]):null;
+$paisR=R::findOne('pais','id=?',[$relacionReside])!=null?R::findOne('pais','id=?',[$relacionReside]):null;
 
 $p->pais_nace=$paisN;
 $p->pais_reside=$paisR;
