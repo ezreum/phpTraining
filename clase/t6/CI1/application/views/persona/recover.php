@@ -1,6 +1,18 @@
-<h1>mi encabezado</h1>
-<form>
+<h1>Lista de personas</h1>
 
-<?= $x ?>
+<table border="1">
+	<tr>
+		<th>ID</th>
+	<th>Nombre</th>
+	</tr>
+	
+	
+	<tr>
+	<?php foreach ($personas as $persona):?>
+		<td> <?= $persona->id ?> </td>
+		<td> <?= $persona->nombre ?> </td>
+		</tr>
+	<?php endforeach;?>
 
-</form>
+
+</table>
