@@ -8,7 +8,13 @@ class Pais extends CI_controller{
     public function cPost(){
         $this->load->model('pais_modelo');
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:'';
-        $this->pais_modelo->crearPais($nombre);
+        try {
+            $this->pais_modelo->crearPais($nombre);
+        } catch (Exception $e) {
+            echo "<h1>duplicado</h1>";
+            die();
+        }
+        
         redirect(base_url().'pais/r');
     }
     
