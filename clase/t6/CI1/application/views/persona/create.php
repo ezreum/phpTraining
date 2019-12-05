@@ -1,11 +1,3 @@
-<?php require_once '../rb.php';
-require_once '../util.php';
-prepRB();  
-
-$paises=R::findAll('pais');
-$aficiones=R::findAll('aficion');
-?> 
-
 <h1>Nueva Persona</h1>
 
 <form action="personasPost.php" method="POST">

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class Pais extends CI_controller{
     
     public function c(){
@@ -11,8 +13,9 @@ class Pais extends CI_controller{
         try {
             $this->pais_modelo->crearPais($nombre);
         } catch (Exception $e) {
-            echo "<h1>duplicado</h1>";
-            die();
+            $_SESSION['_msg']['texto']=$e->getMessage();
+            $_SESSION['_msg']['uri']='pais/create';
+            redirect(base_url().'msg');
         }
         
         redirect(base_url().'pais/r');

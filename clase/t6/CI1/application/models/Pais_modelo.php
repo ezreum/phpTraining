@@ -17,7 +17,8 @@ class Pais_modelo extends CI_Model{
             R::store($pais);
         }
         else {
-           throw new Exception("El pais ya existe");
+           $e=($nombre==null?new Exception('nulo'):new Exception('duplicado'));
+           throw $e;
         }
     }
 }
