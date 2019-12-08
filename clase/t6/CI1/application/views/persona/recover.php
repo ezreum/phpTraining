@@ -16,3 +16,9 @@
 
 
 </table>
+<br/>
+<a href="<?= base_url()?>persona/create" >Crear nueva persona</a>
+<br/>
+<a href="<?= base_url()?>persona/update">Modificar persona</a>
+<br/>
+<a href="<?= base_url()?>persona/delete">Eliminar persona</a>

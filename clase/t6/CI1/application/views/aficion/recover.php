@@ -6,9 +6,8 @@
 	<th>Nombre</th>
 	</tr>
 	
-	
-	<tr>
 	<?php foreach ($aficiones as $aficion):?>
+		<tr>
 		<td> <?= $aficion->id ?> </td>
 		<td> <?= $aficion->nombre ?> </td>
 		</tr>
@@ -16,3 +15,10 @@
 
 
 </table>
+
+<br/>
+<a href="<?= base_url()?>aficion/create" >Crear nueva afición</a>
+<br/>
+<a href="<?= base_url()?>aficion/update">Modificar afición</a>
+<br/>
+<a href="<?= base_url()?>aficion/delete">Eliminar afición</a>

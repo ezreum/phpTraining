@@ -1,6 +1,6 @@
-<h1>crear páis</h1>
+<h1>crear país</h1>
 
-<form action="<?= base_url()?>pais/cPost" method="post">
+<form action="<?= base_url()?>pais/createPost" method="post">
 
 <label for="idp">Nombre</label>
 <input id="idp" type="text" name="nombre"/>
