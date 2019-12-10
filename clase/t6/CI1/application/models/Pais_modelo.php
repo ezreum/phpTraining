@@ -27,6 +27,11 @@ class Pais_modelo extends CI_Model{
         return $pais;
     }
     
+    public function deleteCountry($id) {
+        $pais = R::load('pais', $id);
+        R::trash($pais);
+    }
+    
     public function update($info){
         $paisO = R::load('pais', $info[2]);
         $paisN =R::dispense('pais');

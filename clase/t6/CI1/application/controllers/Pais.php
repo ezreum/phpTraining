@@ -28,17 +28,11 @@ class Pais extends CI_controller{
     }
     
     
-    public function update() {
-        $this->load->model('pais_modelo');
-        $datos['paises'] = $this->pais_modelo->getPaises();
-        $this->load->view('pais/update',$datos);
-    }
-    
     public function updateGet() {
         $this->load->model('pais_modelo');
-        $iden = isset($_POST['pais'])?$_POST['pais']:'';
+        $iden = isset($_POST['paisU'])?$_POST['paisU']:'';
         $dato['pais'] = $this->pais_modelo->getCountry($iden);
-        $this->load->view('pais/updateGet',$dato);
+        $this->load->view('pais/update',$dato);
     }
     
     public function updatePost() {
@@ -57,12 +51,12 @@ class Pais extends CI_controller{
         redirect(base_url().'pais');
     }
     
-    public function delete() {
-        ;
-    }
     
     public function deletePost() {
-        ;
+        $this->load->model('pais_modelo');
+        $iden = isset($_POST['paisD'])?$_POST['paisD']:'';
+        $this->pais_modelo->deleteCountry($iden);
+        redirect(base_url().'pais');
     }
     
 }

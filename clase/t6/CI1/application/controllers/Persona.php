@@ -7,7 +7,29 @@ class Persona extends CI_controller{
     }
     
     public function create() {
-        echo "hola";
+        $this->load->model('pais_modelo');
+        $data['paises'] = $this->pais_modelo->getPaises();
+        $this->load->model('aficion_modelo');
+        $data['aficiones'] = $this->aficion_modelo->getAficiones();
+        $this->load->view('persona/create',$data);
+    }
+    
+    public function createPost() {
+        $this->load->model('persona_modelo');
+        
+        $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
+        $paisN = isset($_POST['relacionNace'])?$_POST['relacionNace']:null;
+        $paisR = isset($_POST['relacionReside'])?$_POST['relacionReside']:null;
+        $aficionG = isset($_POST['gusta'])?$_POST['gusta']:[];
+        $aficionO = isset($_POST['odia'])?$_POST['odia']:[];
+        try {
+            $this->persona_modelo->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
+        } catch (Exception $e) {
+            $_SESSION['_msg']['texto']=$e->getMessage();
+            $_SESSION['_msg']['uri']='pais/create';
+            redirect(base_url().'msg');
+        }
+        redirect(base_url().'persona');
     }
 }
 

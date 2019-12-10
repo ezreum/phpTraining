@@ -1,16 +1,16 @@
 <h1>Nueva Persona</h1>
 
-<form action="personasPost.php" method="POST">
+<form action="<?= base_url()?>persona/createPost" method="POST">
 <label>Nombre</label>
-<input name="persona" type="text"/>
+<input name="nombre" type="text"/>
 <br/>
-	Reside
+	Nace
   <select name="relacionNace">
 <?php foreach ($paises as $pais):?>
   <option value="<?= $pais->id ?>"><?=$pais->nombre ?> </option>
   <?php endforeach;?>
   </select>
-  Vive
+  Reside
   <select name="relacionReside">
  <?php foreach ($paises as $pais):?>
   <option value="<?= $pais->id ?>"><?=$pais->nombre ?> </option>

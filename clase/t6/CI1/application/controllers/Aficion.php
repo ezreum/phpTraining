@@ -25,12 +25,6 @@ class Aficion extends CI_controller{
     }
     
     
-    public function update() {
-        $this->load->model('aficion_modelo');
-        $datos['aficiones'] = $this->aficion_modelo->getAficiones();
-        $this->load->view('aficion/update',$datos);
-    }
-    
     public function updateGet() {
         $this->load->model('aficion_modelo');
         $iden = isset($_POST['aficion'])?$_POST['aficion']:'';
@@ -54,12 +48,17 @@ class Aficion extends CI_controller{
         redirect(base_url().'aficion');
     }
     
-    public function delete() {
-        ;
+    public function delete(){
+        $this->load->model('aficion_modelo');
+        $datos['aficiones'] = $this->aficion_modelo->getAficiones();
+        $this->load->view('aficion/delete',$datos);
     }
     
     public function deletePost() {
-        ;
+        $this->load->model('aficion_modelo');
+        $iden = isset($_POST['aficionD'])?$_POST['aficionD']:'';
+        $this->aficion_modelo->deleteAficion($iden);
+        redirect(base_url().'aficion');
     }
     
 }

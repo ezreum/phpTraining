@@ -6,7 +6,7 @@ class Persona_modelo extends CI_Model{
         $personas = R::findAll('persona');
         return $personas;
     }
-    public function crearPersona($nombre,$idPaisNace, $idPaisReside){
+    public function crearPersona($nombre,$idPaisNace, $idPaisReside, $gustos, $odios){
         $ok = ($nombre!=null && $idPaisNace!=null && $idPaisReside!=null);
         if ($ok){
             $p = R::dispense('persona');
@@ -15,6 +15,8 @@ class Persona_modelo extends CI_Model{
             $p -> nace = $pais;
             $pais = R::findOne('pais','id=?',[$idPaisReside]);
             $p -> reside = $pais;
+            R::store($p);
+            //To-Do Aficiones bean!
         }
     }
 }
