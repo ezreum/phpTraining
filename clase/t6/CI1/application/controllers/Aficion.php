@@ -29,7 +29,7 @@ class Aficion extends CI_controller{
         $this->load->model('aficion_modelo');
         $iden = isset($_POST['aficion'])?$_POST['aficion']:'';
         $dato['aficion'] = $this->aficion_modelo->getAficion($iden);
-        $this->load->view('aficion/updateGet',$dato);
+        $this->load->view('aficion/update',$dato);
     }
     
     public function updatePost() {

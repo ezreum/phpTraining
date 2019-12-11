@@ -19,5 +19,11 @@ class Persona_modelo extends CI_Model{
             //To-Do Aficiones bean!
         }
     }
+    
+    public  function getPersona($id) {
+        $p = R::load('persona', $id);
+        return $p;
+    }
+    
 }
 ?>

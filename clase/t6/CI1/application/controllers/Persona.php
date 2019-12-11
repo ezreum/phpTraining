@@ -31,6 +31,33 @@ class Persona extends CI_controller{
         }
         redirect(base_url().'persona');
     }
+    
+    public function updateGet() {
+        $this->load->model('persona_modelo');
+        $iden = isset($_POST['personaU'])?$_POST['personaU']:'';
+        $dato['persona'] = $this->persona_modelo->getPersona($iden);
+        $this->load->model('aficion_modelo');
+        $dato['aficiones'] = $this->aficion_modelo->getAficiones($iden);
+        $this->load->view('persona/update',$dato);
+    }
+    
+    public function updatePost() {
+        $this->load->model('persona_modelo');
+        $datos[] = isset($_POST['id'])?$_POST['id']:'';
+        $datos[] = isset($_POST['nombre'])?$_POST['nombre']:'';
+        $datos[] = isset($_POST['id-old'])?$_POST['id-old']:'';
+        $datos[] = isset($_POST['nombre-old'])?$_POST['nombre-old']:'';
+        try {
+            $this->persona_modelo->update($datos);
+        } catch (Exception $e) {
+            $_SESSION['_msg']['texto']=$e->getMessage();
+            $_SESSION['_msg']['uri']='aficion/create';
+            redirect(base_url().'msg');
+        }
+        redirect(base_url().'aficion');
+    }
+    
+    
 }
 
 ?>
