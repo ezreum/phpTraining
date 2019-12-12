@@ -1,5 +1,5 @@
 <h1>Persona a modificar</h1>
-<form action="<?= base_url() ?>persona/updatePost" method="post">
+<form action="<?= base_url() ?>persona/updatePost" method="get">
 <input name="id-old" type="hidden" value="<?=$persona->id ?>" />
 <input name="id" type="hidden" value="<?=$persona->id ?>"/>
 <br/>
@@ -9,21 +9,38 @@
 <br/>
 <label>Pais nace</label>
 <input name="nace-old" type="hidden" value="<?= $persona->nace==null?'':$persona->nace->nombre; ?>" />
-<input name="nace" type="text" value="<?= $persona->nace==null?'':$persona->nace->nombre; ?>"/>
-<br/>
+<select name="paisN">
+<?php foreach ($paises as $pais) :?>
+<?php $a=$persona->nace->nombre==$pais->nombre?'selected="selected"':'';?>
+<option  value="<?= $pais==null?'':$pais->nombre; ?>"<?= $a?> ><?= $pais==null?'':$pais->nombre; ?></option>
+<?php endforeach;?>
+</select>
 <label>Pais reside</label>
-<input name="paisR-old" type="hidden" value="<?= $persona->nace==null?'':$persona->reside->nombre; ?>" />
-<input name="paisR" type="text" value="<?= $persona->reside==null?'':$persona->reside->nombre; ?>"/>
+<input name="paisR-old" type="hidden" value="<?= $persona->reside==null?'':$persona->reside->nombre; ?>" />
+<select name="paisR">
+<?php foreach ($paises as $pais) :?>
+<?php $a=$persona->reside->nombre==$pais->nombre?'selected="selected"':'';?>
+<option  value="<?= $pais==null?'':$pais->nombre; ?>" <?= $a?>><?= $pais==null?'':$pais->nombre; ?></option>
+<?php endforeach;?>
+</select>
+
+
 <br/>
 
 <label>aficiones gusta</label>
-<input name="aficionG-old" type="hidden" value="<?= $persona->nace==null?'':$persona->reside->nombre; ?>" />
+<?php foreach ($persona-> aggr ('ownGustoList','aficion') as $gusto):?>
+<input name="idsGustoAnt[]" type="hidden" value="<?= $gusto->id==null?'':$gusto->id; ?>" />
+<?php echo $gusto->id; endforeach;?>
 <!-- es mejor buscar las aficiones entre todas -->
 <!-- La vista no debería de manipular tanto la información -->
 <?php foreach ($aficiones as $aficion):?>
-<?php foreach ($persona-> aggr ('ownOdioList','aficion') as $gusto):?>
- <?php $y=$aficion->id == $gusto->aficion?'checked=checked':''; ?>	   
- <?=$aficion->id.' '.$gusto->aficion ?> 
+
+<?php foreach ($persona-> aggr ('ownGustoList','aficion') as $gusto):?>
+
+<?=$gusto->aficion ?>
+
+
+ <?php $y=$aficion->nombre == $gusto->aficion?'checked=checked':''; ?>	   
 		 <?php endforeach;?>
 		 <input name="gusto[]" type="checkbox" value="<?= $aficion->nombre?>"<?=$y ?>/>
 		 <?= $aficion->nombre?> 
@@ -32,12 +49,12 @@
 <br/>
 <label>aficiones odia</label>
 <input name="aficionO-old" type="hidden" value="<?= $persona->nace==null?'':$persona->reside->nombre; ?>" />
-<select name="aficionO" type="select">
-
-<?php foreach ($persona-> aggr ('ownOdioList','aficion') as $gusto):?>
-<option value="$gusto->nombre">		    
-		 <?= $gusto->nombre?> 
-		 </option>
+<?php foreach ($aficiones as $aficion):?>
+<?php foreach ($persona->ownGustoList as $odio):?>
+ <?php $y=$aficion->nombre == $odio->nombre?'checked=checked':''; ?>	   
+		 <?php endforeach;?>
+		 <input name="odio[]" type="checkbox" value="<?= $aficion->nombre?>"<?=$y ?>/>
+		 <?= $aficion->nombre?> 
 		   <?php endforeach; ?>
 <br/>
 

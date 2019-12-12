@@ -26,7 +26,7 @@ class Persona extends CI_controller{
             $this->persona_modelo->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
         } catch (Exception $e) {
             $_SESSION['_msg']['texto']=$e->getMessage();
-            $_SESSION['_msg']['uri']='pais/create';
+            $_SESSION['_msg']['uri']='persona/create';
             redirect(base_url().'msg');
         }
         redirect(base_url().'persona');
@@ -37,18 +37,22 @@ class Persona extends CI_controller{
         $iden = isset($_POST['personaU'])?$_POST['personaU']:'';
         $dato['persona'] = $this->persona_modelo->getPersona($iden);
         $this->load->model('aficion_modelo');
-        $dato['aficiones'] = $this->aficion_modelo->getAficiones($iden);
+        $dato['aficiones'] = $this->aficion_modelo->getAficiones();
+        $this->load->model('pais_modelo');
+        $dato['paises'] = $this->pais_modelo->getPaises();
         $this->load->view('persona/update',$dato);
     }
     
     public function updatePost() {
         $this->load->model('persona_modelo');
-        $datos[] = isset($_POST['id'])?$_POST['id']:'';
-        $datos[] = isset($_POST['nombre'])?$_POST['nombre']:'';
-        $datos[] = isset($_POST['id-old'])?$_POST['id-old']:'';
-        $datos[] = isset($_POST['nombre-old'])?$_POST['nombre-old']:'';
+        $id = isset($_POST['id'])?$_POST['id']:'';
+        $nombre = isset($_POST['nombre'])?$_POST['nombre']:'';
+        $idAnt = isset($_POST['id-old'])?$_POST['id-old']:'';
+        $paisN = isset($_POST['paisN'])?$_POST['paisN']:'';
+        $paisR = isset($_POST['paisR'])?$_POST['paisR']:'';
+        die();
         try {
-            $this->persona_modelo->update($datos);
+            $this->persona_modelo->update($id, $idAnt, $nombre, $paisN, $paisR, $gustos, $odios);
         } catch (Exception $e) {
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='aficion/create';

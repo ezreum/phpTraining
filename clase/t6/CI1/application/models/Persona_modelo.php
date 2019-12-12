@@ -16,13 +16,26 @@ class Persona_modelo extends CI_Model{
             $pais = R::findOne('pais','id=?',[$idPaisReside]);
             $p -> reside = $pais;
             R::store($p);
+         
             //To-Do Aficiones bean!
+             foreach ($gustos as $gusto){
+                $g= R::dispense('gusto');
+                $a=R::findOne('aficion', 'id=?',$gusto);
+                $g -> persona = $p;
+                $g -> aficion = $a;
+                R::store($g);
+            } 
         }
     }
     
     public  function getPersona($id) {
         $p = R::load('persona', $id);
         return $p;
+    }
+    
+    public function update($id, $idAnt, $nombre, $paisN, $paisR, $gustos, $odios) {
+        ;
+        
     }
     
 }
