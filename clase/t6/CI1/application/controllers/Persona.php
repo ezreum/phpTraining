@@ -25,6 +25,7 @@ class Persona extends CI_controller{
         try {
             $this->persona_modelo->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
         } catch (Exception $e) {
+            session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='persona/create';
             redirect(base_url().'msg');
@@ -46,13 +47,14 @@ class Persona extends CI_controller{
     public function updatePost() {
         $this->load->model('persona_modelo');
         $id = isset($_POST['id'])?$_POST['id']:'';
-        $nombre = isset($_POST['nombre'])?$_POST['nombre']:'';
-        $idAnt = isset($_POST['id-old'])?$_POST['id-old']:'';
-        $paisN = isset($_POST['paisN'])?$_POST['paisN']:'';
-        $paisR = isset($_POST['paisR'])?$_POST['paisR']:'';
+        $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
+        $paisN = isset($_POST['paisN'])?$_POST['paisN']:null;
+        $paisR = isset($_POST['paisR'])?$_POST['paisR']:null;
+        $gustos = isset($_POST['gusto'])?$_POST['gusto']:[];
+        $odios = isset($_POST['odio'])?$_POST['odio']:[];
         die();
         try {
-            $this->persona_modelo->update($id, $idAnt, $nombre, $paisN, $paisR, $gustos, $odios);
+            $this->persona_modelo->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
         } catch (Exception $e) {
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='aficion/create';
