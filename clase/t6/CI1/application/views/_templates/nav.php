@@ -5,7 +5,7 @@
 </a>
 
 <ul class="nav navbar-nav mr-auto">
-    <li class="nav-item dropdown">
+    <li class="nav-item active dropdown">
     <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Persona</a>
     	<div class="dropdown-menu ">
     	<a class="dropdown-item" href="<?= base_url() ?>persona/create">crear</a>
@@ -15,7 +15,7 @@
     
     
     
-    <li class="nav-item dropdown">
+    <li class="nav-item active dropdown">
     <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pais</a>
     	<div class="dropdown-menu">
     	<a class="dropdown-item" href="<?= base_url() ?>pais/create">crear</a>
@@ -25,7 +25,7 @@
     
     
     
-    <li class="nav-item dropdown">
+    <li class="nav-item active dropdown">
     <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Aficion</a>
     	<div class="dropdown-menu">
     	<a class="dropdown-item" href="<?= base_url() ?>aficion/create">crear</a>
@@ -33,7 +33,9 @@
     	</div>
     </li>
 
-
+	<li class="nav-item active dropdown">
+	<a class="navbar-brand " href="<?= base_url(); ?>upload">subir archivo</a>
+	</li>
 
 </ul>
 </nav> 
