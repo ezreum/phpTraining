@@ -3,7 +3,7 @@ class Persona extends CI_controller{
     public function index(){
         $this->load->model('persona_modelo');
         $datos['personas'] = $this->persona_modelo->getPersonas();
-        $this->load->view('persona/recover',$datos);
+        frame($this, 'persona/recover', $datos);
     }
     
     public function create() {
@@ -11,7 +11,7 @@ class Persona extends CI_controller{
         $data['paises'] = $this->pais_modelo->getPaises();
         $this->load->model('aficion_modelo');
         $data['aficiones'] = $this->aficion_modelo->getAficiones();
-        $this->load->view('persona/create',$data);
+        frame($this, 'persona/create', $data);
     }
     
     public function createPost() {
@@ -41,7 +41,7 @@ class Persona extends CI_controller{
         $dato['aficiones'] = $this->aficion_modelo->getAficiones();
         $this->load->model('pais_modelo');
         $dato['paises'] = $this->pais_modelo->getPaises();
-        $this->load->view('persona/update',$dato);
+        frame($this, 'persona/update', $dato);
     }
     
     public function updatePost() {
@@ -60,9 +60,15 @@ class Persona extends CI_controller{
             $_SESSION['_msg']['uri']='aficion/create';
             redirect(base_url().'msg');
         }
-        redirect(base_url().'aficion');
+        redirect(base_url().'persona');
     }
     
+    public function deletePost() {
+        $this->load->model('persona_modelo');
+        $id= isset($_POST['personaD'])?$_POST['personaD']:null;
+        $this->persona_modelo->delete($id);
+        redirect(base_url().'persona');
+    }
     
 }
 

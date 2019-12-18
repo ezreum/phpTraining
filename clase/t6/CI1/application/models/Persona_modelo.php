@@ -17,13 +17,19 @@ class Persona_modelo extends CI_Model{
             $p -> reside = $pais;
             R::store($p);
          
-            //To-Do Aficiones bean!
              foreach ($gustos as $gusto){
                 $g= R::dispense('gusto');
-                $a=R::findOne('aficion', 'id=?',$gusto);
+                $a=R::load('aficion', $gusto);
                 $g -> persona = $p;
                 $g -> aficion = $a;
                 R::store($g);
+            } 
+            foreach ($odios as $odio){
+                $o= R::dispense('odio');
+                $a=R::load('aficion',$odio);
+                $o -> persona = $p;
+                $o -> aficion = $a;
+                R::store($o);
             } 
         }
     }
@@ -37,6 +43,12 @@ class Persona_modelo extends CI_Model{
         ;
         
     }
+    
+    public function delete($id) {
+        $d = R::load('persona', $id);
+        R::trash($d);
+    }
+    
     
 }
 ?>
