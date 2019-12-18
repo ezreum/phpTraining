@@ -52,7 +52,7 @@ class Persona extends CI_controller{
         $paisR = isset($_POST['paisR'])?$_POST['paisR']:null;
         $gustos = isset($_POST['gusto'])?$_POST['gusto']:[];
         $odios = isset($_POST['odio'])?$_POST['odio']:[];
-        die();
+        
         try {
             $this->persona_modelo->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
         } catch (Exception $e) {
@@ -60,7 +60,7 @@ class Persona extends CI_controller{
             $_SESSION['_msg']['uri']='aficion/create';
             redirect(base_url().'msg');
         }
-        redirect(base_url().'persona');
+        //redirect(base_url().'persona');
     }
     
     public function deletePost() {

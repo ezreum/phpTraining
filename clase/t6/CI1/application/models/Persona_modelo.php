@@ -34,14 +34,34 @@ class Persona_modelo extends CI_Model{
         }
     }
     
+    public function signUp($nombre,$idPaisNace, $idPaisReside){
+        $ok = ($nombre!=null && $idPaisNace!=null && $idPaisReside!=null);
+        if ($ok){
+            $p = R::dispense('persona');
+            $p -> nombre = $nombre;
+            $pais = R::findOne('pais','id=?',[$idPaisNace]);
+            $p -> nace = $pais;
+            $pais = R::findOne('pais','id=?',[$idPaisReside]);
+            $p -> reside = $pais;
+            R::store($p);
+            
+        }
+    }
+    
     public  function getPersona($id) {
         $p = R::load('persona', $id);
         return $p;
     }
     
-    public function update($id, $idAnt, $nombre, $paisN, $paisR, $gustos, $odios) {
-        ;
-        
+    public function update($id, $nombre, $paisN, $paisR, $gustos, $odios) {
+        $ok = ($nombre!=null && $paisN!=null && $paisR!=null);
+        if ($ok){
+         $p = R::load('persona', $id);
+         $p->nombre=$nombre;
+         $p->nace=$paisN;
+         $p->reside=$paisR;
+         
+        }
     }
     
     public function delete($id) {
