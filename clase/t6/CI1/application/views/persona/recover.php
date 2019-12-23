@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Lista de personas</h1>
 
 <table class="table table-hover">
@@ -55,3 +56,4 @@
 </table>
 <br/>
 <a href="<?= base_url()?>persona/create" ><button>Crear nueva persona</button></a>
+</div>

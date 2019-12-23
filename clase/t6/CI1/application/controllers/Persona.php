@@ -56,11 +56,12 @@ class Persona extends CI_controller{
         try {
             $this->persona_modelo->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
         } catch (Exception $e) {
+            session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
-            $_SESSION['_msg']['uri']='aficion/create';
+            $_SESSION['_msg']['uri']='persona/updateGet';
             redirect(base_url().'msg');
         }
-        //redirect(base_url().'persona');
+        redirect(base_url().'persona');
     }
     
     public function deletePost() {

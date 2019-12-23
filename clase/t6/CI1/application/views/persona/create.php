@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Nueva Persona</h1>
 
 <form action="<?= base_url()?>persona/createPost" method="POST">
@@ -33,3 +34,4 @@
   <br/>
   <input type="submit" value="añadir persona">
 </form>
+</div>

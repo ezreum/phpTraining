@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Pais a modificar</h1>
 <form action="<?= base_url() ?>pais/updatePost" method="post">
 <input name="id-old" type="hidden" value="<?=$pais->id ?>" />
@@ -9,3 +10,4 @@
 <br/>
 <button type="submit">modificar</button>
 </form>
+</div>

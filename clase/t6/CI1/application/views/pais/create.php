@@ -1,3 +1,4 @@
+<div class="container">
 <h1>crear país</h1>
 
 <form action="<?= base_url()?>pais/createPost" method="post">
@@ -8,3 +9,4 @@
 <input type="submit" value="enviar"/>
 
 </form>
+</div>

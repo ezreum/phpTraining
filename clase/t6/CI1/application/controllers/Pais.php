@@ -6,11 +6,11 @@ class Pais extends CI_controller{
     public function index(){
         $this->load->model('pais_modelo');
         $datos['paises'] = $this->pais_modelo->getPaises();
-        $this->load->view('pais/recover',$datos);
+        frame($this, 'pais/recover',$datos);
     }
     
     public function create(){
-        $this->load->view('pais/create');
+        frame($this, 'pais/create');
     }
     
     public function createPost(){
@@ -32,7 +32,7 @@ class Pais extends CI_controller{
         $this->load->model('pais_modelo');
         $iden = isset($_POST['paisU'])?$_POST['paisU']:'';
         $dato['pais'] = $this->pais_modelo->getCountry($iden);
-        $this->load->view('pais/update',$dato);
+        frame($this, 'pais/update',$datos);
     }
     
     public function updatePost() {

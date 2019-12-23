@@ -55,43 +55,71 @@ class Persona_modelo extends CI_Model{
     
     public function update($id, $nombre, $paisN, $paisR, $gustos, $odios) {
         
-        foreach ($p->ownGustoList as $gusto){
-            echo !in_array($gusto->aficion, $gustos)?
-            $gusto->aficion:
-            $gustos[0];
-        die();
         $ok = ($nombre!=null && $paisN!=null && $paisR!=null);
         if ($ok){
-         $p = R::load('persona', $id);
+          $p = R::load('persona', $id);
          $p->nombre=$nombre;
-         $p->nace=$paisN;
-         $p->reside=$paisR;
+         $p->nace_id=$paisN;
+         $p->reside_id=$paisR;
+         $comunes = [];
          
          foreach ($p->ownGustoList as $gusto){
-             if ( !in_array($gusto->aficion, $gustos) ){
+             
+              if ( !in_array($gusto->aficion->id, $gustos) ){    
                  
-             R::store($p) && R::trash($gusto);
+             R::store($p);
+             R::trash($gusto);
              }
              else{
              $comunes[]=$gusto;
              }
          }
          
-         foreach (array_diff($gustos, $comunes) as $idGusta) {
-             $aficion = R::load('aficion', $idGusta);
-             $gusta = R::dispense('gusta');
-             $gusta->persona = $persona;
+         foreach (array_diff($gustos, $comunes) as $gusta) {
+             
+             echo $gusta;
+             
+             $aficion = R::load('aficion', $gusta);
+             $gusta = R::dispense('gusto');
+             $gusta->persona = $p;
              $gusta->aficion = $aficion;
-             R::store($persona);
+             R::store($p);
              R::store($gusta);
          }
+         
+         $comunes = [];
+         
+         foreach ($p->ownOdioList as $odio){
+             
+             if ( !in_array($odio->aficion->id, $odios) ){
+                 
+                 R::store($p);
+                 R::trash($odio);
+             }
+             else{
+                 $comunes[]=$odio;
+             }
+         }
+         
+         foreach (array_diff($odios, $comunes) as $odio) {
+             
+             echo $odio;
+             
+             $aficion = R::load('aficion', $odio);
+             $odio = R::dispense('odio');
+             $odio->persona = $p;
+             $odio->aficion = $aficion;
+             R::store($p);
+             R::store($odio);
+         }
+         
+         
         } else {
             $e = ($nombre == null ? new Exception("nulo") : new Exception("duplicado"));
             throw $e;
         }
-         
-    }
 }
+
     public function delete($id) {
         $d = R::load('persona', $id);
         R::trash($d);
