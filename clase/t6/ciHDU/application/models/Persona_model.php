@@ -6,6 +6,13 @@ class Persona_model extends CI_Model{
         $personas = R::findAll('persona');
         return $personas;
     }
+    
+    public function getPerson($nombre) {
+        $persona = R::findOne('persona', 'nick=?', [$nombre]);
+        return $persona;
+    }
+    
+    
     public function crearPersona($nombre,$idPaisNace, $idPaisReside, $gustos, $odios){
         $ok = ($nombre!=null && $idPaisNace!=null && $idPaisReside!=null);
         if ($ok){
@@ -134,6 +141,7 @@ class Persona_model extends CI_Model{
 }
 
     public function delete($id) {
+        
         $d = R::load('persona', $id);
         R::trash($d);
     }

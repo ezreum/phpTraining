@@ -8,7 +8,7 @@
     <li class="nav-item active dropdown">
     <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Persona</a>
     	<div class="dropdown-menu ">
-    	<a class="dropdown-item" href="<?= base_url() ?>persona/create">crear</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>persona/see">ver otros contactos</a>
     	<a class="dropdown-item" href="<?= base_url() ?>persona">consultar</a>
     	</div>
     </li>

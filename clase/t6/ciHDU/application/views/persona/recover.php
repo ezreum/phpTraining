@@ -12,7 +12,7 @@
 	
 	
 	<tr>
-	<?php foreach ($personas as $persona):?>
+
 
 		<td> <?= $persona->nombre ?> </td>
 		<td> <?= $persona->nace==null?'':$persona->nace->nombre; ?> </td>
@@ -43,14 +43,14 @@
 		<td>
 		<form action="<?=base_url()?>persona/deletePost" method="post">
 		<input type="hidden" name="personaD" value="<?= $persona->id ?>" /> 
-		<button type="submit">
+		<button type="submit" onclick="confirm('There is no way back!');">
 		<img class="img-thumbnail" src="<?=base_url()?>assets/img/basura.png" width="30px" height="30px"/></button>
 		</form>
 		</td>
 		
 		
 		</tr>
-	<?php endforeach;?>
+	
 
 
 </table>

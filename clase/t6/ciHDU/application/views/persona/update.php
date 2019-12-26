@@ -27,6 +27,7 @@
 <label>aficiones gusta</label>
 <!-- es mejor buscar las aficiones entre todas -->
 
+<?php if ($persona-> aggr ('ownGustoList','aficion')!=null):?>
 
 <?php foreach ($persona-> aggr ('ownGustoList','aficion') as $gusto) {
     $idsGusto[]=$gusto->id;
@@ -40,20 +41,42 @@
 		 <?= $aficion->nombre?> 
 		   <?php endforeach; ?>
 		   
+		   <?php else :?>
+		   (marca aquellas que te gusten)
+		   <?php foreach ($aficiones as $aficion):?>
+   
+		 
+		 <input name="gusto[]" type="checkbox" value="<?= $aficion->id?>"/>
+		 <?= $aficion->nombre?> 
+		   <?php endforeach; ?>
+		   
+		   <?php endif;?>
+		   
 <br/>
 <label>aficiones odia</label>
+
+<?php if ($persona-> aggr ('ownOdioList','aficion')!=null):?>
 
 <?php foreach ($persona-> aggr ('ownOdioList','aficion') as $odio) {
     $idsOdio[]=$odio->id;
 }?>
 <?php foreach ($aficiones as $aficion):?>
-<?php foreach ($persona->ownOdioList as $odio):?>
-  
-		 <?php endforeach;?>
+
 		 <input name="odio[]" type="checkbox" value="<?= $aficion->id?>"
 		 <?=in_array($aficion->id, $idsOdio)?'checked=checked':''?>/>
 		 <?= $aficion->nombre?> 
 		   <?php endforeach; ?>
+		   
+		   <?php else :?>
+		   (marca aquellas que odies)
+		   <?php foreach ($aficiones as $aficion):?>
+
+		 <input name="odio[]" type="checkbox" value="<?= $aficion->id?>"/>
+		 <?= $aficion->nombre?> 
+		   <?php endforeach; ?>
+		   
+		   <?php endif;?>
+		   
 <br/>
 
 <button type="submit">modificar</button>

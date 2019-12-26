@@ -4,8 +4,8 @@ session_start();
 class Pais extends CI_controller{
     
     public function index(){
-        $this->load->model('pais_modelo');
-        $datos['paises'] = $this->pais_modelo->getPaises();
+        $this->load->model('pais_model');
+        $datos['paises'] = $this->pais_model->getPaises();
         frame($this, 'pais/recover',$datos);
     }
     
@@ -14,11 +14,12 @@ class Pais extends CI_controller{
     }
     
     public function createPost(){
-        $this->load->model('pais_modelo');
+        $this->load->model('pais_model');
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:'';
         try {
-            $this->pais_modelo->crearPais($nombre);
+            $this->pais_model->crearPais($nombre);
         } catch (Exception $e) {
+            session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='pais/create';
             redirect(base_url().'msg');
@@ -29,20 +30,20 @@ class Pais extends CI_controller{
     
     
     public function updateGet() {
-        $this->load->model('pais_modelo');
+        $this->load->model('pais_model');
         $iden = isset($_POST['paisU'])?$_POST['paisU']:'';
-        $dato['pais'] = $this->pais_modelo->getCountry($iden);
+        $dato['pais'] = $this->pais_model->getCountry($iden);
         frame($this, 'pais/update',$datos);
     }
     
     public function updatePost() {
-        $this->load->model('pais_modelo');
+        $this->load->model('pais_model');
         $datos[] = isset($_POST['id'])?$_POST['id']:'';
         $datos[] = isset($_POST['nombre'])?$_POST['nombre']:'';
         $datos[] = isset($_POST['id-old'])?$_POST['id-old']:'';
         $datos[] = isset($_POST['nombre-old'])?$_POST['nombre-old']:'';
         try {
-            $this->pais_modelo->update($datos); 
+            $this->pais_model->update($datos); 
         } catch (Exception $e) {
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='pais/create';
@@ -53,9 +54,9 @@ class Pais extends CI_controller{
     
     
     public function deletePost() {
-        $this->load->model('pais_modelo');
+        $this->load->model('pais_model');
         $iden = isset($_POST['paisD'])?$_POST['paisD']:'';
-        $this->pais_modelo->deleteCountry($iden);
+        $this->pais_model->deleteCountry($iden);
         redirect(base_url().'pais');
     }
     

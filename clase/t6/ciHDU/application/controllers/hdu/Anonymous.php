@@ -53,7 +53,7 @@ class Anonymous extends CI_Controller{
                 $_SESSION['_msg']['uri']='hdu/anonymous';
                 redirect(base_url().'msg');
             }
-            redirect(base_url().'persona');
+            redirect(base_url().'hdu/authenticated');
     }
 }
 ?>

@@ -10,14 +10,14 @@ class Pais_model extends CI_Model{
     public function crearPais($nombre) {
         $ok = true;
         $pais = R::findOne('pais','nombre=?',[$nombre]);
-        $ok = ($pais==null);
+        $ok = ($pais==null&&$pais!='');
         if ($ok){
             $pais=R::dispense('pais');
             $pais->nombre = $nombre;
             R::store($pais);
         }
         else {
-           $e=($nombre==null?new Exception('nulo'):new Exception('duplicado'));
+           $e=$nombre==null?new Exception('nulo'):new Exception('duplicado');
            throw $e;
         }
     }

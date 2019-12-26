@@ -1,6 +1,6 @@
 <?php
 
-class Aficion_modelo extends CI_Model{
+class Aficion_model extends CI_Model{
     public function getAficiones() {
         $aficiones = R::findAll('aficion');
         return $aficiones;
@@ -13,11 +13,14 @@ class Aficion_modelo extends CI_Model{
     
     public function create($nombre){
        $aficion = R::findOne('aficion', 'nombre=?', [$nombre]);
-       $ok = ($pais==null);
+       $ok = ($aficion==null&&$aficion!='');
        if ($ok){
            $aficion = R::dispense('aficion');
            $aficion->nombre = $nombre;
            R::store($aficion);
+       }
+       else{ $e=$nombre==null?new Exception('nulo'):new Exception('duplicado');
+       throw $e;
        }
     }
     

@@ -4,22 +4,36 @@ class Persona extends CI_controller{
         session_start();
         if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
             $this->load->model('persona_model');
-            $datos['personas'] = $this->persona_model->getPersonas();
+            $datos['persona'] = $this->persona_model->getPerson($_SESSION['_user']);
             frame($this, 'persona/recover', $datos);
         }
         else  frame($this, 'hdu/privilegios');
     }
     
+    public function see(){
+        session_start();
+        if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
+            $this->load->model('persona_model');
+            $datos['personas'] = $this->persona_model->getPersonas();
+            frame($this, 'persona/recoverAll', $datos);
+        }
+        else  frame($this, 'hdu/privilegios');
+    }
+    
     public function create() {
-        $this->load->model('pais_modelo');
-        $data['paises'] = $this->pais_modelo->getPaises();
-        $this->load->model('aficion_modelo');
-        $data['aficiones'] = $this->aficion_modelo->getAficiones();
-        frame($this, 'persona/create', $data);
+        session_start();
+        if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
+            $this->load->model('pais_model');
+            $data['paises'] = $this->pais_model->getPaises();
+            $this->load->model('aficion_model');
+            $data['aficiones'] = $this->aficion_model->getAficiones();
+            frame($this, 'persona/create', $data);
+        }
+        else  frame($this, 'hdu/privilegios');
     }
     
     public function createPost() {
-        $this->load->model('persona_modelo');
+        $this->load->model('persona_model');
         
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
         $paisN = isset($_POST['relacionNace'])?$_POST['relacionNace']:null;
@@ -27,7 +41,7 @@ class Persona extends CI_controller{
         $aficionG = isset($_POST['gusta'])?$_POST['gusta']:[];
         $aficionO = isset($_POST['odia'])?$_POST['odia']:[];
         try {
-            $this->persona_modelo->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
+            $this->persona_model->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
@@ -38,18 +52,18 @@ class Persona extends CI_controller{
     }
     
     public function updateGet() {
-        $this->load->model('persona_modelo');
+        $this->load->model('persona_model');
         $iden = isset($_POST['personaU'])?$_POST['personaU']:'';
-        $dato['persona'] = $this->persona_modelo->getPersona($iden);
-        $this->load->model('aficion_modelo');
-        $dato['aficiones'] = $this->aficion_modelo->getAficiones();
-        $this->load->model('pais_modelo');
-        $dato['paises'] = $this->pais_modelo->getPaises();
+        $dato['persona'] = $this->persona_model->getPersona($iden);
+        $this->load->model('aficion_model');
+        $dato['aficiones'] = $this->aficion_model->getAficiones();
+        $this->load->model('pais_model');
+        $dato['paises'] = $this->pais_model->getPaises();
         frame($this, 'persona/update', $dato);
     }
     
     public function updatePost() {
-        $this->load->model('persona_modelo');
+        $this->load->model('persona_model');
         $id = isset($_POST['id'])?$_POST['id']:'';
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
         $paisN = isset($_POST['paisN'])?$_POST['paisN']:null;
@@ -58,7 +72,7 @@ class Persona extends CI_controller{
         $odios = isset($_POST['odio'])?$_POST['odio']:[];
         
         try {
-            $this->persona_modelo->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
+            $this->persona_model->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
@@ -69,7 +83,7 @@ class Persona extends CI_controller{
     }
     
     public function deletePost() {
-        $this->load->model('persona_modelo');
+        $this->load->model('persona_model');
         $id= isset($_POST['personaD'])?$_POST['personaD']:null;
         $this->persona_modelo->delete($id);
         redirect(base_url().'persona');
