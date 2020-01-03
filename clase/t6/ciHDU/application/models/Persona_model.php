@@ -7,8 +7,8 @@ class Persona_model extends CI_Model{
         return $personas;
     }
     
-    public function getPerson($nombre) {
-        $persona = R::findOne('persona', 'nick=?', [$nombre]);
+    public function getPerson($nick) {
+        $persona = R::findOne('persona', 'nick=?', [$nick]);
         return $persona;
     }
     
@@ -41,7 +41,7 @@ class Persona_model extends CI_Model{
         }
     }
     
-    public function signUp($nombre, $nick, $pwd, $pwdCheck, $idPaisNace, $idPaisReside){
+    public function signUp($nombre, $nick, $pwd, $pwdCheck, $idPaisNace, $idPaisReside, $priv=false){
         $ok = ($nombre!=null && $nick!=null && $pwd!=null && $pwdCheck!=null && $idPaisNace!=null && $idPaisReside!=null);
         $ok1 =  R::findOne('persona', 'nombre=?', [$nick]) ;
         $ok2 = ($pwd==$pwdCheck);
@@ -54,6 +54,7 @@ class Persona_model extends CI_Model{
             $p -> nace = $pais;
             $pais = R::findOne('pais','id=?',[$idPaisReside]);
             $p -> reside = $pais;
+            $p -> hasPriv = $priv;
             R::store($p);
             
         }
@@ -61,10 +62,18 @@ class Persona_model extends CI_Model{
     
     public function signIn($nick, $pwd){
         $ok = ($nick!=null && $pwd!=null);
-        $p = R::findOne('persona', 'nombre=?', [$nick]) ;
+        $p = R::findOne('persona', 'nick=?', [$nick]);
+        
+        $check=null;
+        
         if ($ok && $p!=null){
-           $check = $p->pwd==password_hash($pwd, PASSWORD_DEFAULT)?true:false;
+            $check = password_verify($pwd,  $p->pwd);
         }
+        else {
+            $e = ($p==null||$check==false? new Exception("error en el usuario o la contraseña"):'');
+            throw $e;
+        }
+        return $check;
     }
     
     
@@ -141,9 +150,48 @@ class Persona_model extends CI_Model{
 }
 
     public function delete($id) {
-        
         $d = R::load('persona', $id);
+        //var_dump($d);
         R::trash($d);
+    }
+    
+    public function subir() {
+        $direc=__DIR__;
+        $trata= explode('/', $direc);
+        $direc="";
+        for ($i = 0; $i < sizeof($trata); $i++) {
+            $direc.=$trata[$i].'/';
+            $trata[$i]=='CI1'?$i=sizeof($trata):'';
+            
+        }
+        $direc.='assets/';
+        
+        
+        $uploadfile = $direc . basename($_FILES['toUpload']['name']);
+        if (!is_dir($direc)){
+            mkdir($direc,0777, true);
+            
+            if (move_uploaded_file($_FILES["toUpload"]["tmp_name"], $uploadfile)) {
+                $msg = "The file " . basename($_FILES["toUpload"]["name"]) . " has been uploaded.";
+            }
+            else{
+                echo "No se subio el archivo";
+            }
+            
+        }
+        
+        else {
+            echo "El directorio ya existe";
+            if (move_uploaded_file($_FILES["toUpload"]["tmp_name"], $uploadfile)) {
+                $msg = "The file " . basename($_FILES["toUpload"]["name"]) . " has been uploaded.";
+            }
+            else{
+                echo "No se subio el archivo";
+            }
+            
+        }
+        
+    echo 'Here is some more debugging info:';
     }
     
     

@@ -22,16 +22,13 @@ class Anonymous extends CI_Controller{
         $paisR = isset($_POST['Reside'])?$_POST['Reside']:null;
         try {
             $this->persona_model->signUp($nombre,$nick ,$pwd,$pwdCheck,$paisN,$paisR);
-            session_start();
-            $_SESSION['_msg']['texto']='usuario creado exitosamente';
-            $_SESSION['_msg']['uri']='hdu/anonymous';
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='hdu/anonymous';
             redirect(base_url().'msg');
         }
-        redirect(base_url().'persona');
+        redirect(base_url());
     }
     
     public function signIn() {
@@ -44,16 +41,23 @@ class Anonymous extends CI_Controller{
         
             $this->load->model('persona_model');
             try {
-            $this->persona_model->signIn($nick ,$pwd);
+            $check = $this->persona_model->signIn($nick ,$pwd);
+            
+            var_dump($check);
+            if ($check){
             session_start();
             $_SESSION['_user']=$nick;
+            redirect(base_url().'hdu/authenticated');
+            }
+            else {frame($this, "hdu/errAuthen");
+            }
             } catch (Exception $e) {
                 session_start();
                 $_SESSION['_msg']['texto']=$e->getMessage();
                 $_SESSION['_msg']['uri']='hdu/anonymous';
                 redirect(base_url().'msg');
             }
-            redirect(base_url().'hdu/authenticated');
+            
     }
 }
 ?>

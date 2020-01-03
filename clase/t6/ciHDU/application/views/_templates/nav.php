@@ -53,9 +53,10 @@
 	
 	<?php elseif ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ):?>
 	
+	<a class="navbar-brand navbar-right" href="<?=base_url()?>hdu/authenticated/logout"><button>Logout</button></a>
 	
 	<a class="navbar-brand navbar-right" href="<?= base_url() ?>hdu/authenticated/signed">
-	<img class="img-thumbnail" src="<?= base_url() ?>assets/img/user.png" alt="usuario" width="40px" height="50px"/>
+	<img class="img-circle" src="<?= base_url() ?>assets/img/user.png" alt="usuario" width="40px"/>
 	</a>
 	
 	

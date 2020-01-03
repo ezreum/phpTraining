@@ -1,3 +1,20 @@
+<script>
+
+	function entrar(){
+
+		if(confirm('There is no way back!')){
+
+		forms[0].submit();
+		}
+		else{
+
+		}
+
+	}
+
+</script>
+
+
 <div class="container">
 <h1>Lista de personas</h1>
 
@@ -13,7 +30,7 @@
 	
 	<tr>
 
-
+	
 		<td> <?= $persona->nombre ?> </td>
 		<td> <?= $persona->nace==null?'':$persona->nace->nombre; ?> </td>
 		<td> <?= $persona->reside==null?'':$persona->reside->nombre; ?> </td>
@@ -43,7 +60,7 @@
 		<td>
 		<form action="<?=base_url()?>persona/deletePost" method="post">
 		<input type="hidden" name="personaD" value="<?= $persona->id ?>" /> 
-		<button type="submit" onclick="confirm('There is no way back!');">
+		<button type="button" onclick="entrar()">
 		<img class="img-thumbnail" src="<?=base_url()?>assets/img/basura.png" width="30px" height="30px"/></button>
 		</form>
 		</td>

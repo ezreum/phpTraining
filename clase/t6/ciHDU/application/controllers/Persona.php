@@ -1,6 +1,6 @@
 <?php
 class Persona extends CI_controller{
-    public function index(){
+    /* public function index(){
         session_start();
         if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
             $this->load->model('persona_model');
@@ -8,7 +8,7 @@ class Persona extends CI_controller{
             frame($this, 'persona/recover', $datos);
         }
         else  frame($this, 'hdu/privilegios');
-    }
+    } */
     
     public function see(){
         session_start();
@@ -51,6 +51,8 @@ class Persona extends CI_controller{
         redirect(base_url().'persona');
     }
     
+
+    
     public function updateGet() {
         $this->load->model('persona_model');
         $iden = isset($_POST['personaU'])?$_POST['personaU']:'';
@@ -79,14 +81,16 @@ class Persona extends CI_controller{
             $_SESSION['_msg']['uri']='persona/updateGet';
             redirect(base_url().'msg');
         }
-        redirect(base_url().'persona');
+        redirect(base_url().'hdu/authenticated/signed');
     }
     
     public function deletePost() {
         $this->load->model('persona_model');
         $id= isset($_POST['personaD'])?$_POST['personaD']:null;
-        $this->persona_modelo->delete($id);
-        redirect(base_url().'persona');
+        $this->persona_model->delete($id);
+        session_start();
+        unset($_SESSION['_user']);
+        redirect(base_url());
     }
     
 }
