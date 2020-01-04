@@ -1,6 +1,6 @@
 <?php
 
-class Persona_model extends CI_Model{
+class User_model extends CI_Model{
     public function getPersonas() {
         
         $personas = R::findAll('persona');
@@ -41,12 +41,13 @@ class Persona_model extends CI_Model{
         }
     }
     
-    public function signUp($nombre, $nick, $pwd, $pwdCheck, $idPaisNace, $idPaisReside, $priv=false){
+    public function signUp($nombre, $nick, $pwd, $pwdCheck, $idPaisNace, $idPaisReside){
         $ok = ($nombre!=null && $nick!=null && $pwd!=null && $pwdCheck!=null && $idPaisNace!=null && $idPaisReside!=null);
         $ok1 =  R::findOne('persona', 'nombre=?', [$nick]) ;
         $ok2 = ($pwd==$pwdCheck);
         if ($ok && $ok2 && $ok1==null){
-            $p = R::dispense('persona');
+            $priv=2;
+            $p = R::dispense('user');
             $p -> nombre = $nombre;
             $p -> nick = $nick;
             $p->pwd = password_hash($pwd, PASSWORD_DEFAULT);

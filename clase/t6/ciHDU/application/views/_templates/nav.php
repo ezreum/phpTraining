@@ -6,35 +6,34 @@
 
 <ul class="nav navbar-nav mr-auto">
     <li class="nav-item active dropdown">
-    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Persona</a>
+    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Users</a>
     	<div class="dropdown-menu ">
-    	<a class="dropdown-item" href="<?= base_url() ?>persona/see">ver otros contactos</a>
-    	<a class="dropdown-item" href="<?= base_url() ?>persona">consultar</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>user">Chat with others</a>
     	</div>
     </li>
     
     
     
     <li class="nav-item active dropdown">
-    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Pais</a>
+    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">countries</a>
     	<div class="dropdown-menu">
-    	<a class="dropdown-item" href="<?= base_url() ?>pais/create">crear</a>
-    	<a class="dropdown-item" href="<?= base_url() ?>pais">consultar</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>pais/create">create</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>pais">see</a>
     	</div>
     </li>
     
     
     
     <li class="nav-item active dropdown">
-    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Aficion</a>
+    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">hobbies</a>
     	<div class="dropdown-menu">
-    	<a class="dropdown-item" href="<?= base_url() ?>aficion/create">crear</a>
-    	<a class="dropdown-item" href="<?= base_url() ?>aficion">consultar</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>aficion/create">create</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>aficion">see</a>
     	</div>
     </li>
 
 	<li class="nav-item active dropdown ">
-	<a class="navbar-brand " href="<?= base_url(); ?>upload">subir archivo</a>
+	<a class="navbar-brand " href="<?= base_url(); ?>upload">upload file</a>
 	</li>
 	</ul>
 	<?php if ( (!isset($_SESSION['_user'])) || ($_SESSION['_user']=='guest')  ):?>
@@ -42,11 +41,11 @@
 	<ul class="nav navbar-nav navbar-right">
 	
 	<li class="nav-item active dropdown">
-	<a class="navbar-brand" href="<?= base_url() ?>hdu/anonymous/signIn">entrar</a>
+	<a class="navbar-brand" href="<?= base_url() ?>hdu/anonymous/signIn">sign in</a>
 	</li>
 	
 	<li class="nav-item active dropdown">
-	<a class="navbar-brand" href="<?= base_url() ?>hdu/anonymous/signUp">registrarse</a>
+	<a class="navbar-brand" href="<?= base_url() ?>hdu/anonymous/signUp">sign up</a>
 	</li>
 	
 	</ul>

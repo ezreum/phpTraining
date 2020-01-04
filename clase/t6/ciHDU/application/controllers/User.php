@@ -1,5 +1,5 @@
 <?php
-class Persona extends CI_controller{
+class User extends CI_controller{
     /* public function index(){
         session_start();
         if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
@@ -14,7 +14,7 @@ class Persona extends CI_controller{
         session_start();
         if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
             $this->load->model('persona_model');
-            $datos['personas'] = $this->persona_model->getPersonas();
+            $datos['personas'] = $this->user_model->getPersonas();
             frame($this, 'persona/recoverAll', $datos);
         }
         else  frame($this, 'hdu/privilegios');
@@ -33,7 +33,7 @@ class Persona extends CI_controller{
     }
     
     public function createPost() {
-        $this->load->model('persona_model');
+        $this->load->model('user_model');
         
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
         $paisN = isset($_POST['relacionNace'])?$_POST['relacionNace']:null;
@@ -41,7 +41,7 @@ class Persona extends CI_controller{
         $aficionG = isset($_POST['gusta'])?$_POST['gusta']:[];
         $aficionO = isset($_POST['odia'])?$_POST['odia']:[];
         try {
-            $this->persona_model->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
+            $this->user_model->crearPersona($nombre,$paisN, $paisR, $aficionG, $aficionO);
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
@@ -56,7 +56,7 @@ class Persona extends CI_controller{
     public function updateGet() {
         $this->load->model('persona_model');
         $iden = isset($_POST['personaU'])?$_POST['personaU']:'';
-        $dato['persona'] = $this->persona_model->getPersona($iden);
+        $dato['persona'] = $this->user_model->getPersona($iden);
         $this->load->model('aficion_model');
         $dato['aficiones'] = $this->aficion_model->getAficiones();
         $this->load->model('pais_model');
@@ -74,7 +74,7 @@ class Persona extends CI_controller{
         $odios = isset($_POST['odio'])?$_POST['odio']:[];
         
         try {
-            $this->persona_model->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
+            $this->user_model->update($id, $nombre, $paisN, $paisR, $gustos, $odios);
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
@@ -87,7 +87,7 @@ class Persona extends CI_controller{
     public function deletePost() {
         $this->load->model('persona_model');
         $id= isset($_POST['personaD'])?$_POST['personaD']:null;
-        $this->persona_model->delete($id);
+        $this->user_model->delete($id);
         session_start();
         unset($_SESSION['_user']);
         redirect(base_url());

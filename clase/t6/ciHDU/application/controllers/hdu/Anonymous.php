@@ -12,7 +12,7 @@ class Anonymous extends CI_Controller{
     }
     
     public function SignUpPost() {
-        $this->load->model('persona_model');
+        $this->load->model('user_model');
         
         $nick =isset($_POST['nick'])?$_POST['nick']:null;
         $nombre = isset($_POST['nombre'])?$_POST['nombre']:null;
@@ -21,7 +21,7 @@ class Anonymous extends CI_Controller{
         $paisN = isset($_POST['Nace'])?$_POST['Nace']:null;
         $paisR = isset($_POST['Reside'])?$_POST['Reside']:null;
         try {
-            $this->persona_model->signUp($nombre,$nick ,$pwd,$pwdCheck,$paisN,$paisR);
+            $this->user_model->signUp($nombre,$nick ,$pwd,$pwdCheck,$paisN,$paisR);
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
@@ -41,7 +41,7 @@ class Anonymous extends CI_Controller{
         
             $this->load->model('persona_model');
             try {
-            $check = $this->persona_model->signIn($nick ,$pwd);
+            $check = $this->user_model->signIn($nick ,$pwd);
             
             var_dump($check);
             if ($check){

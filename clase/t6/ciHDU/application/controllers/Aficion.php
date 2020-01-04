@@ -1,13 +1,28 @@
 <?php
 class Aficion extends CI_controller{
     public function index(){
-        $this->load->model('aficion_model');
-        $datos['aficiones'] = $this->aficion_model->getAficiones();
-        frame($this, 'aficion/recover',$datos);
+        
+        if ( isset($_SESSION['_user']) && $_SESSION['_user']>1) {
+            $this->load->model('aficion_model');
+            $datos['aficiones'] = $this->aficion_model->getAficiones();
+            frame($this, 'aficion/recover',$datos);
+        }
+        else {
+            frame($this, 'hdu/privilegios');
+        }
+        
+        
     }
     
     public function create(){
-        frame($this, 'aficion/create');
+        
+        if ( isset($_SESSION['_user']) && $_SESSION['_user']>1) {
+            frame($this, 'aficion/create');
+                }
+        else {
+            frame($this, 'hdu/privilegios');
+        }
+       
     }
     
     public function createPost(){
