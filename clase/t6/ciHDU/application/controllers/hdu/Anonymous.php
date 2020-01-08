@@ -35,7 +35,7 @@ class Anonymous extends CI_Controller{
             }
             $direc.='assets/upload';
             $extension = explode('.',$fichero);
-            copy( $_FILES['pic']['tmp_name'], $direc.$fichero);
+            copy($_FILES['pic']['tmp_name'], $direc.$fichero);
             echo "el fichero se ha guardado en $direc";
             die();
             
@@ -62,8 +62,7 @@ class Anonymous extends CI_Controller{
             if ($check){
             session_start();
             $user = $this->user_model->getPerson($nick);
-            $_SESSION['_user']['nick']=$user->nick;
-            $_SESSION['_user']['priv']=$user->hasPriv;
+            $_SESSION['_user']=$user;
             redirect(base_url().'hdu/authenticated');
             }
             else {frame($this, "hdu/errAuthen");
