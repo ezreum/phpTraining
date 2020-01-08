@@ -21,8 +21,8 @@
 <table class="table table-hover">
 	<tr>
 		<th>Nombre</th>
+		<th>Foto</th>
 	<th>Nace</th>
-	<th>Foto</th>
 	<th>Reside</th>
 	<th>Gusta</th>
 	<th>Odia</th>
@@ -33,7 +33,9 @@
 
 	
 		<td> <?= $persona->nombre ?> </td>
-		<td> <img alt="cara" src="<?=base_url().'assets/upload/' ?>"> </td>
+		
+		<td><img class="img-fluid" alt="cara" src="<?=base_url().'assets/upload/'.$persona->id.'.'.$persona->extension ?>" width="50 px"> </td>
+		
 		<td> <?= $persona->nace==null?'':$persona->nace->nombre; ?> </td>
 		<td> <?= $persona->reside==null?'':$persona->reside->nombre; ?> </td>
 		
@@ -73,6 +75,8 @@
 
 
 </table>
+<?php if ($_SESSION['_user']->hasPriv->nombre=='admin'):?>
 <br/>
 <a href="<?= base_url()?>persona/create" ><button>Crear nueva persona</button></a>
+<?php endif;?>
 </div>

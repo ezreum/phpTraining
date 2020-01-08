@@ -20,10 +20,15 @@ class Anonymous extends CI_Controller{
         $pwdCheck = isset($_POST['pwdCheck'])?$_POST['pwdCheck']:null;
         $paisN = isset($_POST['Nace'])?$_POST['Nace']:null;
         $paisR = isset($_POST['Reside'])?$_POST['Reside']:null;
-        $fichero = $_FILES['pic']['name'];
+        $fichero = isset($_FILES['pic']['name'])?$_FILES['pic']['name']:'';
+        
         try {
             
-           // $this->user_model->signUp($nombre,$nick,$pwd,$pwdCheck,$paisN,$paisR);
+            $rol=R::load('rol', 2);
+            if ($rol->id==0) {
+                $this->load->model('rol_model');
+                $this->rol_model->init();
+            }
             
             $direc=__DIR__;
             $trata= explode('/', $direc);
@@ -33,12 +38,18 @@ class Anonymous extends CI_Controller{
                 $trata[$i]=='ciHDU'?$i=sizeof($trata):'';
                 
             }
-            $direc.='assets/upload';
+            $direc.='assets/upload/';
             $extension = explode('.',$fichero);
-            copy($_FILES['pic']['tmp_name'], $direc.$fichero);
-            echo "el fichero se ha guardado en $direc";
-            die();
             
+            $id = $this->user_model->signUp($nombre,$nick,$extension[1],$pwd,$pwdCheck,$paisN,$paisR);
+           
+            $fichero = $id.'.'.$extension[1];
+            
+            if (!is_dir($direc)) {
+                mkdir($direc);
+            }
+            copy($_FILES['pic']['tmp_name'], $direc.$fichero);
+            echo "el fichero se ha guardado en $direc";        
             
         } catch (Exception $e) {
             session_start();

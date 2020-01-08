@@ -1,11 +1,11 @@
 <?php
-session_start();
 
 class Pais extends CI_controller{
     
     public function index(){
-        
-        if ( isset($_SESSION['_user']) && $_SESSION['_user']>1) {
+        session_start();
+        if ( isset($_SESSION['_user']) && 
+            ($_SESSION['_user']->hasPriv->nombre=='authenticated' || $_SESSION['_user']->hasPriv->nombre=='admin' )) {
             $this->load->model('pais_model');
             $datos['paises'] = $this->pais_model->getPaises();
             frame($this, 'pais/recover',$datos);
@@ -19,7 +19,9 @@ class Pais extends CI_controller{
     }
     
     public function create(){
-        if ( isset($_SESSION['_user']) && $_SESSION['_user']>1) {
+        session_start();
+        if ( isset($_SESSION['_user']) && 
+            ($_SESSION['_user']->hasPriv->nombre=='authenticated'|| $_SESSION['_user']->hasPriv->nombre=='admin')) {
             frame($this, 'pais/create');
         }
         else {

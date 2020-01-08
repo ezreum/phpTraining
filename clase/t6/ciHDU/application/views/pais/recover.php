@@ -11,6 +11,9 @@
 	<?php foreach ($paises as $pais):?>
 	<tr>
 		<td> <?= $pais->nombre ?> </td>
+		
+		<?php if ($_SESSION['_user']->hasPriv->nombre=='admin'):?>
+		
 		<td>
 		<form action="<?=base_url()?>pais/updateGet" method="post">
 		<input type="hidden" name="paisU" value="<?= $pais->id ?>" /> 
@@ -27,6 +30,7 @@
 		</button>
 		</form>
 		</td>
+		<?php endif;?>
 		</tr>
 	<?php endforeach;?>
 

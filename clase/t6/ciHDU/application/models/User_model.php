@@ -40,22 +40,25 @@ class User_model extends CI_Model{
         }
     }
     
-    public function signUp($nombre, $nick, $pwd, $pwdCheck, $idPaisNace, $idPaisReside){
+    public function signUp($nombre, $nick, $extension, $pwd, $pwdCheck, $idPaisNace, $idPaisReside){
         $ok = ($nombre!=null && $nick!=null && $pwd!=null && $pwdCheck!=null && $idPaisNace!=null && $idPaisReside!=null);
         $ok1 =  R::findOne('persona', 'nombre=?', [$nick]) ;
         $ok2 = ($pwd==$pwdCheck);
         $id;
         if ($ok && $ok2 && $ok1==null){
-            $priv=2;
+            
+            $rol=R::load('rol', 2);
+            
             $p = R::dispense('user');
             $p -> nombre = $nombre;
             $p -> nick = $nick;
+            $p -> extension = $extension; 
             $p->pwd = password_hash($pwd, PASSWORD_DEFAULT);
             $pais = R::findOne('pais','id=?',[$idPaisNace]);
             $p -> nace = $pais;
             $pais = R::findOne('pais','id=?',[$idPaisReside]);
             $p -> reside = $pais;
-            $p -> hasPriv = $priv;
+            $p -> hasPriv = $rol;
             $id = R::store($p);
             
         }

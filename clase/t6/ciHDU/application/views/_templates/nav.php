@@ -50,12 +50,18 @@
 	
 	</ul>
 	
-	<?php elseif ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ):?>
+	<?php elseif ( isset($_SESSION['_user']) && $_SESSION['_user']->hasPriv->nombre!='guest' ):?>
 	
 	<a class="navbar-brand navbar-right" href="<?=base_url()?>hdu/authenticated/logout"><button>Logout</button></a>
 	
 	<a class="navbar-brand navbar-right" href="<?= base_url() ?>hdu/authenticated/signed">
-	<img class="img-circle" src="<?= base_url() ?>assets/img/user.png" alt="usuario" width="40px"/>
+	<img class="img-fluid" alt="cara" src="
+	<?= $_SESSION['_user']->extension!=null||$_SESSION['_user']->extension!=''?
+	base_url().'assets/upload/'.$_SESSION['_user']->id.'.'.$_SESSION['_user']->extension:
+	base_url().'assets/img/user.png';
+	?>" width="40px">
+			
+	
 	</a>
 	
 	

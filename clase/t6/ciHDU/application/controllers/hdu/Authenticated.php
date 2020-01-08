@@ -9,7 +9,7 @@ class Authenticated extends CI_Controller{
         session_start();
         if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
             $this->load->model('user_model');
-            $datos['persona'] = $this->user_model->getPerson($_SESSION['_user']);
+            $datos['persona'] = $this->user_model->getPerson($_SESSION['_user']->nick);
             frame($this, 'persona/recover', $datos);
         }
         else  frame($this, 'hdu/privilegios');
