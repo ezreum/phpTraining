@@ -10,16 +10,6 @@ class User extends CI_controller{
         else  frame($this, 'hdu/privilegios');
     } */
     
-    public function see(){
-        session_start();
-        if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {
-            $this->load->model('persona_model');
-            $datos['personas'] = $this->user_model->getPersonas();
-            frame($this, 'persona/recoverAll', $datos);
-        }
-        else  frame($this, 'hdu/privilegios');
-    }
-    
     public function create() {
         session_start();
         if ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ) {

@@ -8,7 +8,7 @@
     <li class="nav-item active dropdown">
     <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Users</a>
     	<div class="dropdown-menu ">
-    	<a class="dropdown-item" href="<?= base_url() ?>user">Chat with others</a>
+    	<a class="dropdown-item" href="<?= base_url() ?>hdu/authenticated/see">Chat with others</a>
     	</div>
     </li>
     

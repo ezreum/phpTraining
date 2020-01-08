@@ -2,13 +2,12 @@
 
 class User_model extends CI_Model{
     public function getPersonas() {
-        
-        $personas = R::findAll('persona');
+        $personas = R::findAll('user');
         return $personas;
     }
     
     public function getPerson($nick) {
-        $persona = R::findOne('persona', 'nick=?', [$nick]);
+        $persona = R::findOne('user', 'nick=?', [$nick]);
         return $persona;
     }
     
@@ -45,6 +44,7 @@ class User_model extends CI_Model{
         $ok = ($nombre!=null && $nick!=null && $pwd!=null && $pwdCheck!=null && $idPaisNace!=null && $idPaisReside!=null);
         $ok1 =  R::findOne('persona', 'nombre=?', [$nick]) ;
         $ok2 = ($pwd==$pwdCheck);
+        $id;
         if ($ok && $ok2 && $ok1==null){
             $priv=2;
             $p = R::dispense('user');
@@ -56,15 +56,15 @@ class User_model extends CI_Model{
             $pais = R::findOne('pais','id=?',[$idPaisReside]);
             $p -> reside = $pais;
             $p -> hasPriv = $priv;
-            R::store($p);
+            $id = R::store($p);
             
         }
+        return $id;
     }
     
     public function signIn($nick, $pwd){
         $ok = ($nick!=null && $pwd!=null);
-        $p = R::findOne('persona', 'nick=?', [$nick]);
-        
+        $p = R::findOne('user', 'nick=?', [$nick]);
         $check=null;
         
         if ($ok && $p!=null){
@@ -162,10 +162,10 @@ class User_model extends CI_Model{
         $direc="";
         for ($i = 0; $i < sizeof($trata); $i++) {
             $direc.=$trata[$i].'/';
-            $trata[$i]=='CI1'?$i=sizeof($trata):'';
+            $trata[$i]=='ciHDU'?$i=sizeof($trata):'';
             
         }
-        $direc.='assets/';
+        $direc.='assets/upload';
         
         
         $uploadfile = $direc . basename($_FILES['toUpload']['name']);

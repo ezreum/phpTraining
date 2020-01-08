@@ -9,6 +9,8 @@
 <label>Nick (deberá ser único)</label>
 <input name="nick" type="text"/>
 <br/>
+<input type="file" name="pic"/>
+<br/>
 <label>Password</label>
 <input name="pwd" type="password"/>
 <br/>

@@ -7,7 +7,7 @@ class Upload extends CI_Controller{
         if (isset($_POST['toUp'])) {
             
             $this->load->model('persona_model');
-            $this->persona_model->subir();
+            $this->user_model->subir();
             
         print_r($_FILES);
         //else echo "No insertó nada";

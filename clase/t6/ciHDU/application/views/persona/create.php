@@ -1,9 +1,10 @@
 <div class="container">
 <h1>Nueva Persona</h1>
 
-<form action="<?= base_url()?>persona/createPost" method="POST">
+<form action="<?= base_url()?>persona/createPost" enctype="multipart/form-data" method="POST">
 <label>Nombre</label>
 <input name="nombre" type="text"/>
+
 <br/>
 	Nace
   <select name="relacionNace">

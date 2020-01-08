@@ -20,8 +20,26 @@ class Anonymous extends CI_Controller{
         $pwdCheck = isset($_POST['pwdCheck'])?$_POST['pwdCheck']:null;
         $paisN = isset($_POST['Nace'])?$_POST['Nace']:null;
         $paisR = isset($_POST['Reside'])?$_POST['Reside']:null;
+        $fichero = $_FILES['pic']['name'];
         try {
-            $this->user_model->signUp($nombre,$nick ,$pwd,$pwdCheck,$paisN,$paisR);
+            
+           // $this->user_model->signUp($nombre,$nick,$pwd,$pwdCheck,$paisN,$paisR);
+            
+            $direc=__DIR__;
+            $trata= explode('/', $direc);
+            $direc="";
+            for ($i = 0; $i < sizeof($trata); $i++) {
+                $direc.=$trata[$i].'/';
+                $trata[$i]=='ciHDU'?$i=sizeof($trata):'';
+                
+            }
+            $direc.='assets/upload';
+            $extension = explode('.',$fichero);
+            copy( $_FILES['pic']['tmp_name'], $direc.$fichero);
+            echo "el fichero se ha guardado en $direc";
+            die();
+            
+            
         } catch (Exception $e) {
             session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
@@ -38,15 +56,14 @@ class Anonymous extends CI_Controller{
     public function signInPost() {
         $nick= isset($_POST['nick'])?$_POST['nick']:null;
         $pwd =isset($_POST['pwd'])?$_POST['pwd']:null;
-        
-            $this->load->model('persona_model');
-            try {
+            $this->load->model('user_model');
+             try {
             $check = $this->user_model->signIn($nick ,$pwd);
-            
-            var_dump($check);
             if ($check){
             session_start();
-            $_SESSION['_user']=$nick;
+            $user = $this->user_model->getPerson($nick);
+            $_SESSION['_user']['nick']=$user->nick;
+            $_SESSION['_user']['priv']=$user->hasPriv;
             redirect(base_url().'hdu/authenticated');
             }
             else {frame($this, "hdu/errAuthen");
@@ -56,8 +73,8 @@ class Anonymous extends CI_Controller{
                 $_SESSION['_msg']['texto']=$e->getMessage();
                 $_SESSION['_msg']['uri']='hdu/anonymous';
                 redirect(base_url().'msg');
-            }
+            } 
             
-    }
+    } 
 }
 ?>

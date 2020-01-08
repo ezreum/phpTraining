@@ -22,6 +22,7 @@
 	<tr>
 		<th>Nombre</th>
 	<th>Nace</th>
+	<th>Foto</th>
 	<th>Reside</th>
 	<th>Gusta</th>
 	<th>Odia</th>
@@ -32,6 +33,7 @@
 
 	
 		<td> <?= $persona->nombre ?> </td>
+		<td> <img alt="cara" src="<?=base_url().'assets/upload/' ?>"> </td>
 		<td> <?= $persona->nace==null?'':$persona->nace->nombre; ?> </td>
 		<td> <?= $persona->reside==null?'':$persona->reside->nombre; ?> </td>
 		
