@@ -55,15 +55,15 @@
 		</td>
 		
 		<td>
-		<form action="<?=base_url()?>persona/updateGet" method="post">
-		<input type="hidden" name="personaU" value="<?= $persona->id ?>" /> 
+		<form action="<?=base_url()?>user/updateGet" method="post">
+		<input type="hidden" name="persona" value="<?= $persona->id ?>" /> 
 		<button type="submit">
 		<img class="img-thumbnail" src="<?=base_url()?>assets/img/lapiz.png" width="30px" height="30px"/></button>
 		</form>
 		</td>
 		<td>
-		<form action="<?=base_url()?>persona/deletePost" method="post">
-		<input type="hidden" name="personaD" value="<?= $persona->id ?>" /> 
+		<form action="<?=base_url()?>user/deletePost" method="post">
+		<input type="hidden" name="persona" value="<?= $persona->id ?>" /> 
 		<button type="button" onclick="entrar()">
 		<img class="img-thumbnail" src="<?=base_url()?>assets/img/basura.png" width="30px" height="30px"/></button>
 		</form>

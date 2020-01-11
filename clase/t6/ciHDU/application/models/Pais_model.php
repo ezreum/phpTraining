@@ -7,6 +7,11 @@ class Pais_model extends CI_Model{
         return $personas;
     }
     
+    public function getCountry($id) {
+        $pais = R::load('pais', $id);
+        return $pais;
+    }
+    
     public function crearPais($nombre) {
         $ok = true;
         $pais = R::findOne('pais','nombre=?',[$nombre]);
@@ -22,30 +27,23 @@ class Pais_model extends CI_Model{
         }
     }
     
-    public function getCountry($id) {
-        $pais = R::load('pais', $id);
-        return $pais;
-    }
-    
-    public function deleteCountry($id) {
-        $pais = R::load('pais', $id);
-        R::trash($pais);
-    }
-    
     public function update($info){
-        $paisO = R::load('pais', $info[2]);
-        $paisN =R::dispense('pais');
-        $paisN->id=$info[0];
-        $paisN->nombre=$info[1];
-        if ($paisN->nombre !== $paisO->nombre && $paisN->nombre != null) {
-            $paisO-> id = $paisN->id;
-            $paisO-> nombre = $paisN->nombre;
-            R::store($paisO);
+        $paisO = R::findOne('pais', 'nombre=?', [$info[1]]);
+        if ($paisO->id == '0') {
+            $paisN =R::dispense('pais');
+            $paisN->id=$info[0];
+            $paisN->nombre=$info[1];
+            R::store($paisN);
         }
         else {
             $e=($paisN->nombre==null?new Exception('nulo'):new Exception('duplicado'));
             throw $e;
         }
+    }
+    
+    public function deleteCountry($id) {
+        $pais = R::load('pais', $id);
+        R::trash($pais);
     }
     
 }

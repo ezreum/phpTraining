@@ -9,7 +9,6 @@ class Pais extends CI_controller{
             $this->load->model('pais_model');
             $datos['paises'] = $this->pais_model->getPaises();
             frame($this, 'pais/recover',$datos);
-            
         }
         else {
             frame($this, 'hdu/privilegios');
@@ -48,8 +47,8 @@ class Pais extends CI_controller{
     
     public function updateGet() {
         $this->load->model('pais_model');
-        $iden = isset($_POST['paisU'])?$_POST['paisU']:'';
-        $dato['pais'] = $this->pais_model->getCountry($iden);
+        $iden = isset($_POST['pais'])?$_POST['pais']:'';
+        $datos ['pais'] = $this->pais_model->getCountry($iden);
         frame($this, 'pais/update',$datos);
     }
     
@@ -57,11 +56,10 @@ class Pais extends CI_controller{
         $this->load->model('pais_model');
         $datos[] = isset($_POST['id'])?$_POST['id']:'';
         $datos[] = isset($_POST['nombre'])?$_POST['nombre']:'';
-        $datos[] = isset($_POST['id-old'])?$_POST['id-old']:'';
-        $datos[] = isset($_POST['nombre-old'])?$_POST['nombre-old']:'';
         try {
             $this->pais_model->update($datos); 
         } catch (Exception $e) {
+            session_start();
             $_SESSION['_msg']['texto']=$e->getMessage();
             $_SESSION['_msg']['uri']='pais/create';
             redirect(base_url().'msg');
@@ -72,7 +70,7 @@ class Pais extends CI_controller{
     
     public function deletePost() {
         $this->load->model('pais_model');
-        $iden = isset($_POST['paisD'])?$_POST['paisD']:'';
+        $iden = isset($_POST['pais'])?$_POST['pais']:'';
         $this->pais_model->deleteCountry($iden);
         redirect(base_url().'pais');
     }

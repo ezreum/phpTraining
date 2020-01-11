@@ -4,7 +4,6 @@
 <input name="id" type="hidden" value="<?=$aficion->id ?>"/>
 
 <label>Nombre</label>
-<input name="nombre-old" type="hidden" value="<?=$aficion->nombre ?>" />
 <input name="nombre" type="text" value="<?=$aficion->nombre ?>"/>
 <br/>
 <button type="submit">modificar</button>
