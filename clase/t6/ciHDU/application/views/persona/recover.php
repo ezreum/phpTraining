@@ -4,7 +4,7 @@
 
 		if(confirm('There is no way back!')){
 
-		forms[0].submit();
+		document.forms[1].submit();
 		}
 		else{
 
@@ -41,8 +41,7 @@
 		
 		<td>
 		<?php foreach ($persona-> aggr ('ownGustoList','aficion') as $gusto):?>
-		    
-		 <?= $gusto->nombre!=null?$gusto->nombre:'';?> 
+		  <?= $gusto->nombre!=null?$gusto->nombre:'';?>
 		   <?php endforeach; ?>
 		 </td>
 		
@@ -56,13 +55,13 @@
 		
 		<td>
 		<form action="<?=base_url()?>user/updateGet" method="post">
-		<input type="hidden" name="persona" value="<?= $persona->id ?>" /> 
+		<input type="hidden" name="persona" value="<?= $persona->nick ?>" /> 
 		<button type="submit">
 		<img class="img-thumbnail" src="<?=base_url()?>assets/img/lapiz.png" width="30px" height="30px"/></button>
 		</form>
 		</td>
 		<td>
-		<form action="<?=base_url()?>user/deletePost" method="post">
+		<form action="<?=base_url()?>user/delete" method="post">
 		<input type="hidden" name="persona" value="<?= $persona->id ?>" /> 
 		<button type="button" onclick="entrar()">
 		<img class="img-thumbnail" src="<?=base_url()?>assets/img/basura.png" width="30px" height="30px"/></button>
@@ -77,6 +76,6 @@
 </table>
 <?php if ($_SESSION['_user']->hasPriv->nombre=='admin'):?>
 <br/>
-<a href="<?= base_url()?>persona/create" ><button>Crear nueva persona</button></a>
+<a href="<?= base_url()?>hdu/anonymous/signUp" ><button>Crear nueva persona</button></a>
 <?php endif;?>
 </div>

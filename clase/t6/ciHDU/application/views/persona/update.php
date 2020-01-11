@@ -1,6 +1,6 @@
 <div class="container">
 <h1>Persona a modificar</h1>
-<form action="<?= base_url() ?>persona/updatePost" method="post">
+<form action="<?= base_url() ?>user/updatePost" method="post">
 <input name="id" type="hidden" value="<?=$persona->id ?>"/>
 <br/>
 <label>Nombre</label>
