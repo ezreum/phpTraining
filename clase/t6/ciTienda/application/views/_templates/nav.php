@@ -46,7 +46,7 @@
 	</li>
 	
 	<li class="nav-item active dropdown">
-	<a class="navbar-brand" href="<?= base_url() ?>">registrarse</a>
+	<a class="navbar-brand" href="<?= base_url().'role/anonymous/signUp' ?>">registrarse</a>
 	</li>
 	
 	</ul>
