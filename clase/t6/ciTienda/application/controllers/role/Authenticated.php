@@ -2,7 +2,7 @@
 class Authenticated extends CI_Controller{
     public function index() {
         session_start();
-        frame($this, 'home/index');
+        frame($this, 'home/home');
     }
     
     public function signed() {

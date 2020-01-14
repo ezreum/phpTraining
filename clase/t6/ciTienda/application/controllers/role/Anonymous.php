@@ -11,14 +11,15 @@ class Anonymous extends CI_Controller{
         if ($country->id==0) {
             
             $direc=__DIR__;
-            $trata= explode('/', $direc);
+            $trata= explode('\\', $direc);
             $direc="";
             for ($i = 0; $i < sizeof($trata); $i++) {
-                $direc.=$trata[$i].'/';
+                $direc.=$trata[$i].'\\';
                 $trata[$i]=='ciTienda'?$i=sizeof($trata):'';
                 
             }
-            $direc.='assets/countries.txt';
+            // \\ por windows;
+            $direc.='assets\\countries.txt';
             
             $this->load->model('country_model');
             $this->country_model->init($direc);
@@ -56,7 +57,8 @@ class Anonymous extends CI_Controller{
                 $trata[$i]=='ciTienda'?$i=sizeof($trata):'';
                 
             }
-            $direc.='assets/upload/';
+            //$direc.='assets/upload/';
+            $direc.='assets\\upload\\';
             
             $extension = explode('.',$file);
             
@@ -81,7 +83,7 @@ class Anonymous extends CI_Controller{
     }
     
     public function signIn() {
-        frame($this, 'hdu/anonymous/signIn');
+        frame($this, 'role/anonymous/signIn');
     }
     
     public function signInPost() {
@@ -94,14 +96,14 @@ class Anonymous extends CI_Controller{
             session_start();
             $user = $this->user_model->getPerson($nick);
             $_SESSION['_user']=$user;
-            redirect(base_url().'hdu/authenticated');
+            redirect(base_url().'role/authenticated');
             }
-            else {frame($this, "hdu/errAuthen");
+            else {frame($this, "role/errAuthen");
             }
             } catch (Exception $e) {
                 session_start();
                 $_SESSION['_msg']['texto']=$e->getMessage();
-                $_SESSION['_msg']['uri']='hdu/anonymous';
+                $_SESSION['_msg']['uri']='role/anonymous';
                 redirect(base_url().'msg');
             } 
             

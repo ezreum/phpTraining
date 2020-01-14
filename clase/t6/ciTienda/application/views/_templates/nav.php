@@ -6,10 +6,10 @@
 
 <ul class="nav navbar-nav mr-auto">
     <li class="nav-item active dropdown">
-    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">menu</a>
+    <a class="navbar-brand nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products</a>
     	<div class="dropdown-menu ">
-    	<a class="dropdown-item" href="<?= base_url() ?>">submenu</a>
-    	<a class="dropdown-item" href="<?= base_url() ?>">submenu2</a>
+    	<a class="dropdown-item" href="<?= base_url().'product/create' ?>">new</a>
+    	<a class="dropdown-item" href="<?= base_url().'product' ?>">all</a>
     	</div>
     </li>
     
@@ -42,7 +42,7 @@
 	<ul class="nav navbar-nav navbar-right">
 	
 	<li class="nav-item active dropdown">
-	<a class="navbar-brand" href="<?= base_url() ?>">entrar</a>
+	<a class="navbar-brand" href="<?= base_url().'role/anonymous/signIn' ?>">entrar</a>
 	</li>
 	
 	<li class="nav-item active dropdown">
@@ -53,7 +53,7 @@
 	
 	<?php elseif ( isset($_SESSION['_user']) && $_SESSION['_user']!='guest' ):?>
 	
-	<a class="navbar-brand navbar-right" href="<?= base_url() ?>hdu/authenticated/signed">
+	<a class="navbar-brand navbar-right" href="<?= base_url() ?>role/authenticated/signed">
 	<img class="img-circle" src="<?= base_url() ?>assets/img/user.png" alt="usuario" width="40px"/>
 	</a>
 	

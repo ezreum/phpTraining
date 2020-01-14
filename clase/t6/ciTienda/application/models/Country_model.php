@@ -5,10 +5,9 @@ class Country_model extends CI_Model {
         while (!feof($file)){
             $line=fgets($file);
             $country=$line;
-            if ($country!=0) {
+            if ($country!='0') {
                 $this->create($country);
             }
-                
             }
         fclose($file);
     }

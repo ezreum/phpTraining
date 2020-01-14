@@ -1,5 +1,11 @@
 <?php
 class User_model extends CI_Model {
+    
+    function getPerson($nick) {
+        $user = R::findOne('user', 'nick=?', [$nick]);
+        return $user;
+    }
+    
     function create($name, $nick) {
         $user= R::dispense('user');
         $check = R::findOne('user', 'nick=?', [$nick]);
@@ -33,4 +39,25 @@ class User_model extends CI_Model {
             throw $e;
         }
     }
+    
+    
+    function signIn($nick, $pwd) {
+        
+        $user = R::findOne('user', 'nick=?', [$nick]);
+        $details = R::load('userdetails', $user->id);
+        if ($user!=null) {
+            $check=null;
+            
+            if ($pwd!=null){
+                $check = password_verify($pwd,  $details->pwd);
+            }
+            else {
+                $e = ($p==null||$check==false? new Exception("mistakes in either the name or the password"):'');
+                throw $e;
+            }
+            return $check;
+        }
+    }
+    
+    
 }
