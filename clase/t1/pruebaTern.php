@@ -19,8 +19,9 @@ foreach ($a as $nombre => $edad){
 }
 echo "TAL CUAL\n";
 asort($a);
+$r=0;
 foreach ($a as $nombre => $edad){
-    echo $r++ . "." ." nombre " . $nombre." ".$edad."\n";
+    echo ++$r . "." ." nombre " . $nombre." ".$edad."\n";
 }
 echo "ORDENADO\n";
 echo "La mayor edad es ".$may."\n";

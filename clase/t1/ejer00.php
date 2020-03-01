@@ -10,15 +10,17 @@ $z=0;
 $bloque = array();
 echo "solo el numero correcto te permitirá salir del bucle";
 echo "\n";
-fscanf(STDIN, "%d\n", $i);
-for ($i=1;$i!=0; $z++){
-    $bloque[$z] = $i;
+fscanf(STDIN, "%d\n", $e);
+for ($i=0; $e!=0; $i++){
+    $bloque[$i] = $e;
     echo "Fallaste, prueba otra vez\n";
-    fscanf(STDIN, "%d\n", $i);
+    fscanf(STDIN, "%d\n", $e);
 }
 echo "Acertaste, ve un paz";
 
-for ($i=0, $size = count($bloque);$i<$size;$i++){
+$size = count($bloque);
+
+for ($i=0; $i<$size-1; $i++){
     $r=$bloque[$i];
     $t=$bloque[$i+1];
     if ($r>$t){
@@ -31,10 +33,9 @@ for ($i=0, $size = count($bloque);$i<$size;$i++){
     }
     
 }
-
 echo "\n";
 echo "Mínimo ".$bloque[0]."\n";
-echo "Máximo ".$bloque[$i];
+echo "Máximo ".$bloque[(sizeof($bloque)-1)];
    
 
 
