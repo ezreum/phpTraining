@@ -6,7 +6,17 @@ if (!isset($_COOKIE['UID'])){
     setcookie("UID",$aleatorio);
 }
 else {
+    $r;
+    if (!isset($_COOKIE['visitas'])) {
+        $r=0;
+        setcookie("visitas",$r);
+    }
+    else {
+        $r = $_COOKIE['visitas']+1;
+        setcookie("visitas", $r);
+    }
     echo"<h1>Te conozco</h1>";
+    echo "<h2>tu número de visitas es $r</h2>";
 }
 
 ?>

@@ -15,7 +15,7 @@ $pwd=isset($_POST['pwd'])?$_POST['pwd']:'';
 $bo=false;
 
 foreach ($bd['usuarios'] as $usuario => $contra){
-    $bo= $name==$usuario && $pwd == $contra?true:false;
+    $bo= ($name==$usuario) && ($pwd == $contra) ? true:false;
 }
 
 if ($bo) {

@@ -11,5 +11,10 @@
 		<input type="submit" value="Enviar nombre"/>
 		
 		</form>
+		
+		<form action="ej01all.php">
+		<input type="submit" value="ver los que están en la base"/>
+		</form>
+		
 	</body>
 </html>
