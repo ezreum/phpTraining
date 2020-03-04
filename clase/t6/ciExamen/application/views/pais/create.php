@@ -3,8 +3,8 @@
 
 <form action="<?= base_url()?>pais/createPost" method="post">
 
-<label for="id">Nombre</label>
-<input id="id" type="text" name="nombre"/>
+<label for="nombre">Nombre</label>
+<input id="nombre" type="text" name="nombre"/>
 <br/>
 <input type="submit" value="enviar"/>
 
