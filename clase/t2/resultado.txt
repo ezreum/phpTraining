@@ -1,0 +1,52 @@
+Araba/Álava: max=01520 min=00240
+Albacete: max=02999 min=02001
+Alicante/Alacant: max=03860 min=03001
+Almería: max=04964 min=04001
+Ávila: max=05697 min=00548
+Badajoz: max=06980 min=06001
+Illes Balears: max=07872 min=07001
+Barcelona: max=43421 min=08001
+Burgos: max=39232 min=01118
+Cáceres: max=10991 min=10000
+Cádiz: max=11693 min=11001
+Castellón/Castelló: max=12952 min=12001
+Ciudad Real: max=14449 min=13001
+Córdoba: max=18312 min=14001
+A Coruña: max=15999 min=15001
+Cuenca: max=24512 min=02636
+Girona: max=17869 min=
+Granada: max=19680 min=15489
+Guadalajara: max=28190 min=16160
+Gipuzkoa: max=20870 min=02100
+Huelva: max=22400 min=02170
+Huesca: max=22889 min=22000
+Jaén: max=23790 min=23001
+León: max=24996 min=21193
+Lleida: max=25799 min=08281
+La Rioja: max=26589 min=26001
+Lugo: max=27893 min=27001
+Madrid: max=28991 min=28000
+Málaga: max=29796 min=29001
+Murcia: max=32131 min=02438
+Navarra: max=50686 min=31001
+Ourense: max=32990 min=32001
+Asturias: max=33996 min=03392
+Palencia: max=39250 min=34001
+Las Palmas: max=35660 min=34570
+Pontevedra: max=36995 min=36001
+Salamanca: max=47428 min=37001
+Santa Cruz de Tenerife: max=38917 min=38001
+Cantabria: max=39880 min=39001
+Segovia: max=40594 min=40001
+Sevilla: max=41989 min=10701
+Soria: max=42392 min=42001
+Tarragona: max=73820 min=43001
+Teruel: max=44793 min=44001
+Toledo: max=45960 min=45001
+Valencia/València: max=46989 min=43900
+Valladolid: max=47883 min=47001
+Bizkaia: max=48993 min=48001
+Zamora: max=49882 min=49001
+Zaragoza: max=90007 min=22808
+Ceuta: max=51005 min=51001
+Melilla: max=52006 min=52001

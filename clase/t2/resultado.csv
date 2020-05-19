@@ -1,0 +1,53 @@
+provincia,minimo,maximo
+Araba/Álava,00240,01520
+Albacete,02001,02999
+Alicante/Alacant,03001,03860
+Almería,04001,04964
+Ávila,00548,05697
+Badajoz,06001,06980
+"Illes Balears",07001,07872
+Barcelona,08001,43421
+Burgos,01118,39232
+Cáceres,10000,10991
+Cádiz,11001,11693
+Castellón/Castelló,12001,12952
+"Ciudad Real",13001,14449
+Córdoba,14001,18312
+"A Coruña",15001,15999
+Cuenca,02636,24512
+Girona,,17869
+Granada,15489,19680
+Guadalajara,16160,28190
+Gipuzkoa,02100,20870
+Huelva,02170,22400
+Huesca,22000,22889
+Jaén,23001,23790
+León,21193,24996
+Lleida,08281,25799
+"La Rioja",26001,26589
+Lugo,27001,27893
+Madrid,28000,28991
+Málaga,29001,29796
+Murcia,02438,32131
+Navarra,31001,50686
+Ourense,32001,32990
+Asturias,03392,33996
+Palencia,34001,39250
+"Las Palmas",34570,35660
+Pontevedra,36001,36995
+Salamanca,37001,47428
+"Santa Cruz de Tenerife",38001,38917
+Cantabria,39001,39880
+Segovia,40001,40594
+Sevilla,10701,41989
+Soria,42001,42392
+Tarragona,43001,73820
+Teruel,44001,44793
+Toledo,45001,45960
+Valencia/València,43900,46989
+Valladolid,47001,47883
+Bizkaia,48001,48993
+Zamora,49001,49882
+Zaragoza,22808,90007
+Ceuta,51001,51005
+Melilla,52001,52006
